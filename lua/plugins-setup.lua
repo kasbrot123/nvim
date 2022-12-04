@@ -72,24 +72,26 @@ return packer.startup(function(use)
   use("hrsh7th/nvim-cmp") -- completion plugin
   use("hrsh7th/cmp-buffer") -- source for text in buffer
   use("hrsh7th/cmp-path") -- source for file system paths
+  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
+  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
   -- -- snippets
   use("L3MON4D3/LuaSnip") -- snippet engine
-  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-  use("rafamadriz/friendly-snippets") -- useful snippets
+  use("saadparwaiz1/cmp_luasnip") -- for autocompletion, connection to luasnip and cmp
+  use("rafamadriz/friendly-snippets") -- useful snippets for diff. languages
   --
+  
+
   -- -- managing & installing lsp servers, linters & formatters
-  -- use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-  -- use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+  use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
+  use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
   --
-  -- use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-  -- use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-  -- use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   --
   -- -- formatting & linting
-  -- use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-  -- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
   -- treesitter configuration
   -- use({

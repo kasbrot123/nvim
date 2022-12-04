@@ -10,11 +10,11 @@ if not cmp_nvim_lsp_status then
   return
 end
 
--- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-  return
-end
+-- -- import typescript plugin safely
+-- local typescript_setup, typescript = pcall(require, "typescript")
+-- if not typescript_setup then
+--   return
+-- end
 
 local keymap = vim.keymap -- for conciseness
 
@@ -56,56 +56,67 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- configure html server
-lspconfig["html"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
 
--- configure typescript server with plugin
-typescript.setup({
-  server = {
+-- #########################################
+-- configure the lsp servers
+
+-- configure python server
+lspconfig["pyright"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
-  },
 })
-
--- configure css server
-lspconfig["cssls"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
--- configure tailwindcss server
-lspconfig["tailwindcss"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
--- configure emmet language server
-lspconfig["emmet_ls"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-})
-
--- configure lua server (with special settings)
-lspconfig["sumneko_lua"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = { -- custom settings for lua
-    Lua = {
-      -- make the language server recognize "vim" global
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        -- make language server aware of runtime files
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-        },
-      },
-    },
-  },
-})
+--
+--
+-- -- configure html server
+-- lspconfig["html"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
+--
+-- -- configure typescript server with plugin
+-- typescript.setup({
+--   server = {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--   },
+-- })
+--
+-- -- configure css server
+-- lspconfig["cssls"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
+--
+-- -- configure tailwindcss server
+-- lspconfig["tailwindcss"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
+--
+-- -- configure emmet language server
+-- lspconfig["emmet_ls"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+-- })
+--
+-- -- configure lua server (with special settings)
+-- lspconfig["sumneko_lua"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   settings = { -- custom settings for lua
+--     Lua = {
+--       -- make the language server recognize "vim" global
+--       diagnostics = {
+--         globals = { "vim" },
+--       },
+--       workspace = {
+--         -- make language server aware of runtime files
+--         library = {
+--           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--           [vim.fn.stdpath("config") .. "/lua"] = true,
+--         },
+--       },
+--     },
+--   },
+-- })
