@@ -1,21 +1,18 @@
 -- import mason plugin safely
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
-  print('no mason')
   return
 end
 
 -- import mason-lspconfig plugin safely
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
-    print('no mason lspconfig')
   return
 end
 
 -- import mason-null-ls plugin safely
 local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
 if not mason_null_ls_status then
-    print('no mason null')
   return
 end
 
@@ -33,18 +30,21 @@ mason_lspconfig.setup({
     -- "sumneko_lua",
     -- "emmet_ls",
     "pyright",
+    -- "jedi-language-server",
+    -- "python-lsp-server",
   },
   -- auto-install configured servers (with lspconfig)
   automatic_installation = true, -- not the same as ensure_installed
 })
 
--- mason_null_ls.setup({
---   -- list of formatters & linters for mason to install
---   ensure_installed = {
---     "prettier", -- ts/js formatter
---     "stylua", -- lua formatter
---     "eslint_d", -- ts/js linter
---   },
---   -- auto-install configured formatters & linters (with null-ls)
---   automatic_installation = true,
--- })
+mason_null_ls.setup({
+  -- list of formatters & linters for mason to install
+  ensure_installed = {
+    -- "prettier", -- ts/js formatter
+    -- "stylua", -- lua formatter
+    -- "eslint_d", -- ts/js linter
+    "flake8",
+  },
+  -- auto-install configured formatters & linters (with null-ls)
+  automatic_installation = true,
+})
