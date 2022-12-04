@@ -1,15 +1,15 @@
-require("plugins-setup")
 require("options")
 require("keymaps")
+require("plugins-setup")
 
-require("plugins.nvim-cmp")
 require("plugins.colorscheme")
 require("plugins.comment")
 require("plugins.nvim-tree")
-require("plugins.lualine")
+require("plugins.nvim-cmp")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.gitsigns")
+--require("plugins.lualine")
 
 require("plugins.lsp.mason")
 require("plugins.lsp.lspconfig")

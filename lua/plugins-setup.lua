@@ -84,7 +84,6 @@ return packer.startup(function(use)
   -- -- managing & installing lsp servers, linters & formatters
   use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
   use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
-  --
   use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
   -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   --

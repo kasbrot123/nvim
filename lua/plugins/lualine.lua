@@ -6,9 +6,9 @@ end
 
 
 lualine.setup({
-    options = {
-        theme = "tokyonight",
-    },
+    -- options = {
+    --     theme = "tokyonight",
+    -- },
 })
 
 -- -- get lualine nightfly theme
