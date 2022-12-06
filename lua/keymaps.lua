@@ -48,14 +48,14 @@ keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
 keymap.set("n", "<leader>t", "<cmd>terminal<CR>", opts)
 
-michi = function()
+run_python = function()
     vim.cmd('TermExec cmd="run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
 end
 
 -- python IDE
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython"<CR>', opts)
-keymap.set("n", "<leader>p", "<cmd>lua michi()<CR>", opts)
+keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
 
 
 -- maps for autocompletion
