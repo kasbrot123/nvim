@@ -61,10 +61,10 @@ end
 -- configure the lsp servers
 
 -- configure python server
-lspconfig["pyright"].setup({
-    capabilities = capabilities,
-    -- on_attach = on_attach,
-})
+-- lspconfig["pyright"].setup({
+--     capabilities = capabilities,
+--     -- on_attach = on_attach,
+-- })
 
 -- #########################################
 -- other servers which I don't need

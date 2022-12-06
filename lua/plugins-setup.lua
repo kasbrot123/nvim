@@ -35,7 +35,8 @@ return packer.startup(function(use)
   use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
   -- Colorscheme 
-  use('folke/tokyonight.nvim')
+  -- use('folke/tokyonight.nvim')
+  use('bluz71/vim-nightfly-colors')
 
   -- -- essential plugins
   use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
@@ -52,7 +53,7 @@ return packer.startup(function(use)
   use("nvim-lualine/lualine.nvim")
 
   -- -- fuzzy finding w/ telescope
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "cmake" }) -- dependency for better sorting performance
+  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 
   -- git integration
