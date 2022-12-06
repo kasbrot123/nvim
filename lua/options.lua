@@ -32,6 +32,14 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.hlsearch = false
 opt.incsearch = true
 
+vim.cmd([[
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+]])
+
 -- cursor line
 -- opt.cursorline = true -- highlight the current cursor line
 
