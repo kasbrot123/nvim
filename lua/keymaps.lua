@@ -49,6 +49,12 @@ keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
 keymap.set("n", "<leader>t", "<cmd>terminal<CR>", opts)
 
+keymap.set("n", "<tab>", ">>", opts)
+keymap.set("n", "<s-Tab>", "<<", opts)
+
+
+
+
 run_python = function()
     vim.cmd('TermExec cmd="run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
 end

@@ -9,7 +9,7 @@ require("plugins.nvim-cmp")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.gitsigns")
---require("plugins.lualine")
+require("plugins.lualine")
 
 require("plugins.lsp.mason")
 require("plugins.lsp.lspconfig")
