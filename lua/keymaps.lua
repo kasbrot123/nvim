@@ -37,17 +37,15 @@ keymap.set({"n", "v"}, "J", "<C-d>", opts)
 keymap.set({"n", "v"}, "K", "<C-u>", opts)
 keymap.set("c", "qq", "q!", opts)
 keymap.set("c", "qq", "q!", opts)
-keymap.set("n", "<leader>v", "<C-v>", opts)
---keymap.set("n", "<leader>w", "<cmd>wrap")
--- keymap.set("n", "<leader>h", "<C-w>h")
--- keymap.set("n", "<leader>j", "<C-w>j")
--- keymap.set("n", "<leader>k", "<C-w>k")
--- keymap.set("n", "<leader>l", "<C-w>l")
 keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
 keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
+
+-- leader commands
 keymap.set("n", "<leader>t", "<cmd>terminal<CR>", opts)
+keymap.set("n", "<leader>v", "<C-v>", opts)
+keymap.set("n", "<leader>w", "<cmd>wrap")
 
 keymap.set("n", "<tab>", ">>", opts)
 keymap.set("n", "<s-Tab>", "<<", opts)
@@ -82,62 +80,13 @@ keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on
 
 -- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
--- nnoremap <leader>w :set wrap!<CR>
--- nnoremap <BS> gt
 -- nnoremap <leader>t :terminal<CR>
 -- nnoremap <leader>u :UndotreeShow<CR>
-
--- vnoremap <F5> y :wincmd l<CR>a%cpaste<CR><C-w>:wincmd h<CR> :wincmd l<CR><C-w>""<C-w>:wincmd h<CR>:wincmd l<CR>--<CR>
--- nnoremap <silent> <F5> :w<CR>:wincmd l<CR>a<BS>run <C-w>"#<CR>
-
-
--- " maps for python
--- if executable('python3')
---     nnoremap <leader>p :w <bar> :!python3 %<CR>
---     nnoremap <leader>pi :w <bar> :!python3 -i %<CR>
---     nnoremap <silent> <Leader>ip :vertical terminal ipython3<CR>
--- else
---     nnoremap <leader>p :w <bar> :!python %<CR>
---     nnoremap <leader>pi :w <bar> :!python -i %<CR>
---     nnoremap <silent> <Leader>ip :vertical terminal ipython<CR>
--- endif
---
 
 
 -- nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 -- nnoremap <silent> <Leader>- :vertical resize -5<CR>
 -- nnoremap <silent> <Leader>= :wincmd =<CR>
 -- nnoremap <silent> <Leader>0 :wincmd h <CR> :vertical resize 30 <CR> :wincmd l <CR>
-
-
--- use jk to exit insert mode
---keymap.set("i", "jk", "<ESC>")
-
--- clear search highlights
---keymap.set("n", "<leader>nh", ":nohl<CR>")
-
-
--- increment/decrement numbers
---keymap.set("n", "<leader>+", "<C-a>") -- increment
---keymap.set("n", "<leader>-", "<C-x>") -- decrement
-
--- window management
---keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
---keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
--- keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
--- keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
-
--- keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
--- keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
--- keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
--- keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
-
-----------------------
--- Plugin Keybinds
-----------------------
-
--- vim-maximizer
---keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
-
 
 
