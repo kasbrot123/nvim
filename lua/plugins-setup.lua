@@ -39,7 +39,7 @@ return packer.startup(function(use)
   use('bluz71/vim-nightfly-colors')
 
   -- -- essential plugins
-  use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+  -- use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
   -- -- commenting with gc
   use("numToStr/Comment.nvim")
   --
@@ -107,7 +107,7 @@ return packer.startup(function(use)
   -- })
 
   -- auto closing
-  -- use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+  use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
   -- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 
