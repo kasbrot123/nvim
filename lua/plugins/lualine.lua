@@ -6,9 +6,13 @@ end
 
 
 lualine.setup({
-    -- options = {
-    --     theme = "tokyonight",
-    -- },
+    options = {
+        -- theme = "nightfly",
+        theme = "auto",
+        icons_enabled = false,
+        section_separators = { left = '', right = ''},
+        component_separators = { left = '|', right = '|'},
+    },
 })
 
 -- -- get lualine nightfly theme
