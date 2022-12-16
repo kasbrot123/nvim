@@ -98,17 +98,17 @@ return packer.startup(function(use)
 
 
   -- treesitter configuration
-  -- use({
-  --   "nvim-treesitter/nvim-treesitter",
-  --   run = function()
-  --     local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-  --     ts_update()
-  --   end,
-  -- })
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = function()
+      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+      ts_update()
+    end,
+  })
 
   -- auto closing
   use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
-  -- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 
   -- use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)

@@ -10,7 +10,7 @@ require("plugins.telescope")
 require("plugins.gitsigns")
 require("plugins.autopairs")
 require("plugins.lualine")
--- require("plugins.treesitter")
+require("plugins.treesitter")
 
 require("plugins.lsp.mason")
 require("plugins.lsp.lspconfig")
