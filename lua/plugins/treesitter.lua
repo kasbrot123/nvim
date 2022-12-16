@@ -19,8 +19,8 @@ treesitter.setup({
     "html",
     "lua",
     "vim",
-    "markdown",
     "bash",
+    -- "markdown",
     -- "gitignore",
     -- "xml",
     -- "python",
@@ -34,6 +34,7 @@ treesitter.setup({
     -- "graphql",
     -- "dockerfile",
   },
-  -- auto install above language parsers
-  auto_install = true,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = false,
 })
