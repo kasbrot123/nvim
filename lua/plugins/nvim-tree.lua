@@ -34,6 +34,7 @@ nvimtree.setup({
       },
     },
   },
+  update_cwd = true,
   -- git = {
   --    ignore = false,
   -- },
