@@ -47,10 +47,10 @@ keymap.set("n", "<leader>t", "<cmd>terminal<CR>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>wrap")
 
-keymap.set("n", "<tab>", ">>", opts)
-keymap.set("n", "<s-Tab>", "<<", opts)
-keymap.set("v", "<tab>", ">", opts)
-keymap.set("v", "<s-Tab>", "<", opts)
+-- keymap.set("n", "<tab>", ">>", opts)
+-- keymap.set("n", "<s-Tab>", "<<", opts)
+-- keymap.set("v", "<tab>", ">", opts)
+-- keymap.set("v", "<s-Tab>", "<", opts)
 
 
 

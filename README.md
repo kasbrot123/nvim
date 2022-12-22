@@ -7,7 +7,7 @@ This is my `neovim` config folder. Heavily under construction...
 The nvim config needs some dependencies to work properly.
 
 - `npm` to install `pyright` as lsp server for python
-- `ripgrep` for telescope live_grep
-
+- `ripgrep` for telescope live_grep (windows choco)
+- `gcc` and `g++` are nice to have
 
 
