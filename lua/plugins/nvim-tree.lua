@@ -36,7 +36,7 @@ nvimtree.setup({
   },
   -- nvim tree "." to enter cd command to change root folder
   update_cwd = true,
-  -- git = {
-  --    ignore = false,
-  -- },
+  git = {
+     ignore = false,
+  },
 })
