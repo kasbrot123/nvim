@@ -55,7 +55,8 @@ keymap.set("n", "<leader>w", "<cmd>wrap")
 
 
 run_python = function()
-    vim.cmd('TermExec cmd="run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
+    vim.cmd(':w')
+    vim.cmd('TermExec cmd="\\%run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
 end
 
 -- python IDE
