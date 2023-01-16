@@ -45,7 +45,7 @@ keymap.set("n", "<C-l>", "<C-w>l", opts)
 -- leader commands
 keymap.set("n", "<leader>t", "<cmd>terminal<CR>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts)
-keymap.set("n", "<leader>w", "<cmd>wrap")
+keymap.set("n", "<leader>w", "<cmd>wrap<cr>")
 
 -- keymap.set("n", "<tab>", ">>", opts)
 -- keymap.set("n", "<s-Tab>", "<<", opts)
