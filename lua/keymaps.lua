@@ -61,7 +61,8 @@ end
 
 -- python IDE
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
-keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython"<CR>', opts)
+keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
+-- keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython"<CR>', opts)
 keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
 
 
