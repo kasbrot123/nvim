@@ -43,7 +43,6 @@ keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
 
 -- leader commands
-keymap.set("n", "<leader>t", "<cmd>terminal<CR>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>wrap<cr>")
 
@@ -59,11 +58,19 @@ run_python = function()
     vim.cmd('TermExec cmd="\\%run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
 end
 
--- python IDE
+keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=vertical<cr>", opts)
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
-keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
+
+-- python IDE
+keymap.set("n", "<leader>op", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
+keymap.set("n", "<leader>p", "<cmd>lua run_python()<CR>", opts)
 -- keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython"<CR>', opts)
-keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
+keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts)
+keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
+keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
+
+-- keymap.set("v", "<leader>p", vim.cmd("ToggleTermSendVisualSelection"), opts)
+
 
 
 -- maps for autocompletion
@@ -82,13 +89,5 @@ keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on
 
 -- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
--- nnoremap <leader>t :terminal<CR>
 -- nnoremap <leader>u :UndotreeShow<CR>
-
-
--- nnoremap <silent> <Leader>+ :vertical resize +5<CR>
--- nnoremap <silent> <Leader>- :vertical resize -5<CR>
--- nnoremap <silent> <Leader>= :wincmd =<CR>
--- nnoremap <silent> <Leader>0 :wincmd h <CR> :vertical resize 30 <CR> :wincmd l <CR>
-
 
