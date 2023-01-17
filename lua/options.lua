@@ -33,11 +33,11 @@ opt.hlsearch = false
 opt.incsearch = true
 
 vim.cmd([[
-augroup vimrc-incsearch-highlight
-  autocmd!
-  autocmd CmdlineEnter /,\? :set hlsearch
-  autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
+    augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+    augroup END
 ]])
 
 -- cursor line
@@ -62,9 +62,4 @@ opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
 -- opt.iskeyword:append("-") -- consider string-string as whole word
-
-
-
-
-
 
