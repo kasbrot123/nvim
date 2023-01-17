@@ -36,7 +36,14 @@ return packer.startup(function(use)
 
   -- Colorscheme 
   -- use('folke/tokyonight.nvim')
-  use('bluz71/vim-nightfly-colors')
+  -- use('bluz71/vim-nightfly-colors')
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    config = function()
+        vim.cmd('colorscheme rose-pine')
+    end
+})
 
   -- -- essential plugins
   -- use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
