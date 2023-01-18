@@ -2,7 +2,7 @@ require("options")
 require("keymaps")
 require("plugins-setup")
 
--- require("plugins.colorscheme")
+require("plugins.colorscheme")
 require("plugins.comment")
 require("plugins.nvim-tree")
 require("plugins.nvim-cmp")

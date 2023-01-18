@@ -7,8 +7,8 @@ end
 
 lualine.setup({
     options = {
-        -- theme = "nightfly",
-        theme = "auto",
+        theme = "nightfly",
+        -- theme = "auto",
         icons_enabled = false,
         section_separators = { left = '', right = ''},
         component_separators = { left = '|', right = '|'},
