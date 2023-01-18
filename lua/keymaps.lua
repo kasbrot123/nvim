@@ -41,6 +41,7 @@ keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
 keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
+keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 
 -- leader commands
 keymap.set("n", "<leader>v", "<C-v>", opts)
@@ -88,6 +89,4 @@ keymap.set("n", "<leader>h", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documen
 keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
 -- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
--- nnoremap <leader>u :UndotreeShow<CR>
 

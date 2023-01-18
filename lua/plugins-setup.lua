@@ -122,6 +122,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
     use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
+    use("mbbill/undotree") -- undotree for better file history, deactivate swapfiles
 
     -- use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
     --
@@ -133,7 +134,7 @@ return packer.startup(function(use)
     --
 
 
-    -- I thing, packer will not install previous packages, if it was just installed the first time
+    -- I think, packer will not install previous packages, if it was just installed the first time
     -- same as PackerSync
     if packer_bootstrap then
         require("packer").sync()

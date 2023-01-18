@@ -32,6 +32,10 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.hlsearch = false
 opt.incsearch = true
 
+opt.swapfile = false
+opt.undofile = true
+
+
 vim.cmd([[
     augroup vimrc-incsearch-highlight
     autocmd!
