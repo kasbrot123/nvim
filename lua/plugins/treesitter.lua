@@ -19,10 +19,10 @@ treesitter.setup({
     -- check with TSInstallInfo
     -- install manually with TSInstall <package>
     ensure_installed = {
-        "html",
-        "vim",
-        "bash",
-        "latex",
+        -- "html",
+        -- "vim",
+        -- "bash",
+        -- "latex",
         -- "lua",
         -- "python",
         -- "markdown",
