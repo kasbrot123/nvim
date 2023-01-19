@@ -43,12 +43,13 @@ keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 
-keymap.set('n', '<leader>+', '<cmd>vertical resize +5')
-keymap.set('n', '<leader>-', '<cmd>vertical resize -5')
+keymap.set('n', '<leader>+', '<cmd>vertical resize +5<cr>', opts)
+keymap.set('n', '<leader>-', '<cmd>vertical resize -5<cr>', opts)
+keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
 
 -- leader commands
 keymap.set("n", "<leader>v", "<C-v>", opts)
-keymap.set("n", "<leader>w", "<cmd>wrap<cr>")
+keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 
 -- keymap.set("n", "<tab>", ">>", opts)
 -- keymap.set("n", "<s-Tab>", "<<", opts)
