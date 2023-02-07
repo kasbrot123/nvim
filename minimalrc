@@ -1,0 +1,221 @@
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set Options
+
+
+" Turn on syntax highlighting.
+syntax on
+
+" Disable the default Vim startup message.
+set shortmess+=I
+
+" Show line numbers.
+set number
+
+" relative line numbers
+set relativenumber
+
+" Always show the status line at the bottom, even if you only have one window open.
+set laststatus=2
+
+" The backspace key has slightly unintuitive behavior by default. For example,
+" by default, you can't backspace before the insertion point set with 'i'.
+" This configuration makes backspace behave more reasonably, in that you can
+" backspace over anything.
+set backspace=indent,eol,start
+
+" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
+" shown in any window) that has unsaved changes. This is to prevent you from "
+" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
+" hidden buffers helpful enough to disable this protection. See `:help hidden`
+" for more information on this.
+set hidden
+
+" This setting makes search case-insensitive when all characters in the string
+" being searched are lowercase. However, the search becomes case-sensitive if
+" it contains any capital letters. This makes searching more convenient.
+set ignorecase
+set smartcase
+
+" Disable audible bell because it's annoying.
+set noerrorbells visualbell t_vb=
+
+" Enable mouse support. You should avoid relying on this too much, but it can
+" sometimes be convenient.
+set mouse+=a
+
+" set tab stop properties
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+
+" scroll buffer so that curser does not reach bottom or top
+set scrolloff=4
+
+" sets a color colum for exceeding the coding limit
+set colorcolumn=80
+
+" sets a sign column, do not really know where it is useful
+"set signcolumn=yes
+
+" set no highlight search, otherwise marks all results and stays highlighted
+" Enable searching as you type, rather than waiting till you press enter.
+set incsearch
+
+"set nohlsearch
+" while searching all results get highlighted 
+" when exit searching highlight is gone
+" to move between results: CTRL-G and CTRL-T 
+set nohlsearch
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+
+" set text for nowrap when reaching end of screen
+"set nowrap
+" set linebreak, wrap text at spaces and not in the middle of the word
+set linebreak
+
+" sets auto indent for tabs, should use both when using smartindent
+set autoindent
+set smartindent
+
+" uses spaces when pressing tab key
+set expandtab
+
+" set encoding style to utf-8, because of windows problems
+set encoding=utf-8
+"set fileencoding=utf-8
+
+" undo tree and backup files
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+
+" shows hidden chars at end etc.
+set list
+set listchars=tab:-->,trail:.
+
+
+" show command in bottom bar
+set showcmd
+" show cursor line (Problem: hidden chars spaces/tabs are shown in full color)
+" set cursorline
+" visual autocomplete for command menu
+set wildmenu
+" highlight matching [{()}]
+set showmatch
+
+" when splitting window cursor is right
+set splitright
+set splitbelow
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key Mappings 
+
+" leader key definition : space
+let mapleader = " "
+
+nnoremap x _x
+
+" undo tree with history of changes
+map ß $
+map H ^
+map L $
+map J <C-d>
+map K <C-u>
+nnoremap a A
+cnoremap qq q!
+nnoremap <BS> gt
+nmap Q <Nop>
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>s :w <bar> :source %<CR>
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>t :terminal<CR>
+nnoremap <leader>v <C-v>
+nnoremap <leader>s :set spell!<CR>
+nnoremap <leader>ss z=<CR>
+nnoremap <leader>w :set wrap!<CR>
+" nnoremap <leader>f :wincmd v<bar> :Ex <bar> :vertical resize 30 <CR>
+nnoremap <leader>f :tabnew <bar> :Ex<CR>
+nnoremap <leader>cl :!pdflatex %<CR>
+nnoremap <leader>op :!start brave %:p:r.pdf<CR>
+
+" window motions
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
+
+" resize window with Leader-key +/-
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap <silent> <Leader>= :wincmd =<CR>
+nnoremap <silent> <Leader>0 :wincmd h <CR> :vertical resize 30 <CR> :wincmd l <CR>
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins 
+"
+"    install vim plug from website via 'curl ...' 
+"    enter :source %
+"    :PlugInstall
+"    -> everything is explained on the website
+"
+"
+" create the folders .vim/autoload
+" place the file plug.vim in this folder from github page
+" https://github.com/junegunn/vim-plug
+"
+" Unix command:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+
+call plug#begin('~/.vim/plugged')
+" gruvbox color scheme 
+Plug 'morhetz/gruvbox'
+" undo tree for writing history
+Plug 'mbbill/undotree'
+" gcc or [visual]gc for comments
+Plug 'tpope/vim-commentary'
+" sexy status bar
+Plug 'itchyny/lightline.vim'
+" git integration
+Plug 'tpope/vim-fugitive'
+" quotes arround words
+Plug 'tpope/vim-surround'
+" Goyo better visibility
+Plug 'junegunn/goyo.vim'
+" autopairs for closing/deleting "", ()
+Plug 'jiangmiao/auto-pairs'
+call plug#end()
+
+
+
+" for spell check highlighting
+augroup my_colours
+    autocmd!
+    autocmd ColorScheme gruvbox hi SpellBad cterm=reverse
+augroup END
+
+
+" set colorscheme to gruvbox
+colorscheme gruvbox
+set background=dark
+
+
+"set color scheme for light line (status bar)
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+
