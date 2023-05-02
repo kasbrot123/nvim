@@ -133,6 +133,7 @@ return packer.startup(function(use)
     -- use("szw/vim-maximizer") -- maximizes and restores current window
     --
 
+    use("dstein64/vim-startuptime")
 
     -- I think, packer will not install previous packages, if it was just installed the first time
     -- same as PackerSync
