@@ -30,6 +30,14 @@ keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
 keymap.set("n", "<leader>v", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 
+keymap.set("n", "<leader>dg1", ":diffget LOCAL")
+keymap.set("n", "<leader>dg2", ":diffget BASE")
+keymap.set("n", "<leader>dg3", ":diffget REMOTE")
+keymap.set("n", "<leader>dgo", "zo")
+
+keymap.set("n", "ö", ":w<cr>")
+keymap.set("n", "ä", ":x<cr>")
+
 -- keymap.set("n", "<tab>", ">>", opts)
 -- keymap.set("n", "<s-Tab>", "<<", opts)
 -- keymap.set("v", "<tab>", ">", opts)
