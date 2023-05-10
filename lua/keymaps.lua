@@ -61,7 +61,21 @@ keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 run_python = function()
     vim.cmd(':w')
     vim.cmd('TermExec cmd="\\%run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
+    -- vim.cmd('TermExec cmd=""')
+    vim.cmd('wincmd l')
+    vim.cmd('norm i')
+    vim.cmd('TermExec cmd=""')
+    -- vim.cmd('norm <CR>')
 end
+
+
+run_visual = function()
+    vim.cmd('ToggleTermSendVisualSelection')
+    vim.cmd('wincmd l')
+    vim.cmd('norm i')
+    vim.cmd('TermExec cmd=""')
+end
+
 
 keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=vertical<cr>", opts)
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
@@ -70,7 +84,7 @@ keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 keymap.set("n", "<leader>op", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
 keymap.set("n", "<leader>p", "<cmd>lua run_python()<CR>", opts)
 -- keymap.set("n", "<leader>ip", '<cmd>TermExec cmd="ipython"<CR>', opts)
-keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts)
+keymap.set("v", "<leader>p", "<cmd>lua run_visual()<CR>", opts)
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
 
