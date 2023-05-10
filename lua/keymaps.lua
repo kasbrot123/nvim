@@ -70,11 +70,13 @@ keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 keymap.set("n", "<leader>op", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
 keymap.set("n", "<leader>p", "<cmd>lua run_python()<CR>", opts)
 
--- current solution 
-keymap.set("v", "<leader>p", "<cmd>lua run_visual()<CR>", opts)
+-- this is the preferred solution but it did not work out
+-- keymap.set("v", "<leader>p", "<cmd>lua run_visual()<CR>", opts)
 
 -- old solution, worked on raspi
--- keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts)
+keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts)
+
+
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
 
