@@ -23,7 +23,7 @@ opt.listchars = {
 
 
 -- scrolloff prevents cursor to hit the bottom/top
-opt.scrolloff = 8
+opt.scrolloff = 6
 opt.colorcolumn = "80"
 
 -- search settings
