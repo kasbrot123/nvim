@@ -34,6 +34,7 @@ keymap.set("n", "<leader>dg1", ":diffget LOCAL")
 keymap.set("n", "<leader>dg2", ":diffget BASE")
 keymap.set("n", "<leader>dg3", ":diffget REMOTE")
 keymap.set("n", "<leader>dgo", "zo")
+keymap.set("v", "<leader>l", ":norm Hi")
 
 keymap.set("n", "ö", ":w<cr>")
 keymap.set("n", "ä", ":x<cr>")
