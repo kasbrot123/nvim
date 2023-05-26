@@ -38,6 +38,8 @@ keymap.set("v", "<leader>l", ":norm Hi")
 
 keymap.set("n", "ö", ":w<cr>")
 keymap.set("n", "ä", ":x<cr>")
+keymap.set("n", ">", ">>")
+keymap.set("n", "<", "<<")
 
 -- keymap.set("n", "<tab>", ">>", opts)
 -- keymap.set("n", "<s-Tab>", "<<", opts)
