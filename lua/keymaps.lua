@@ -27,12 +27,13 @@ keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set('n', '+', '<cmd>vertical resize +5<cr>', opts)
 keymap.set('n', '-', '<cmd>vertical resize -5<cr>', opts)
 keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
-keymap.set("n", "<leader>v", "<C-v>", opts)
+keymap.set("n", "<leader>V", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>")
 keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>")
 
 
+keymap.set("n", "<leader>v", ":vs<cr>", opts)
 keymap.set("n", "<leader>dg1", ":diffget LOCAL")
 keymap.set("n", "<leader>dg2", ":diffget BASE")
 keymap.set("n", "<leader>dg3", ":diffget REMOTE")
@@ -45,6 +46,7 @@ keymap.set("n", ">", ">>")
 keymap.set("n", "<", "<<")
 
 
+keymap.set('i', 'jj', '<ESC>')
 
 
 -- keymap.set("n", "<tab>", ">>", opts)
