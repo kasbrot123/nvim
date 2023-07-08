@@ -11,7 +11,7 @@ local opts = { noremap = true }
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x', opts)
 keymap.set("n", "a", "A", opts)
-keymap.set("n", "ß", "$", opts)
+keymap.set({"n", "v"}, "ß", "$", opts)
 keymap.set({"n", "v"}, "H", "^", opts)
 keymap.set({"n", "v"}, "L", "$", opts)
 keymap.set({"n", "v"}, "J", "<C-d>", opts)
