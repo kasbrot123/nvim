@@ -33,6 +33,8 @@ keymap.set("n", "<leader>V", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>")
 keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>")
+keymap.set("n", "<leader>s", ":set invspell<CR>")
+keymap.set("n", "<leader>ss", "z=")
 
 
 keymap.set("n", "<leader>v", ":vs<cr>", opts)
@@ -55,6 +57,7 @@ keymap.set('i', 'jj', '<ESC>')
 -- keymap.set("n", "<s-Tab>", "<<", opts)
 -- keymap.set("v", "<tab>", ">", opts)
 -- keymap.set("v", "<s-Tab>", "<", opts)
+
 
 
 run_python = function()
