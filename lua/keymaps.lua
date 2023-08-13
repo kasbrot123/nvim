@@ -2,64 +2,69 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true }
+local silent = { silent = true }
 
 
 --------------------------------------------------------------------------------
 -- my mappings
 
 
--- delete single character without copying into register
-keymap.set("n", "x", '"_x', opts)
-keymap.set("n", "a", "A", opts)
+-- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
 keymap.set({"n", "v"}, "H", "^", opts)
 keymap.set({"n", "v"}, "L", "$", opts)
 keymap.set({"n", "v"}, "J", "<C-d>", opts)
 keymap.set({"n", "v"}, "K", "<C-u>", opts)
-keymap.set("c", "qq", "q!", opts)
+-- window movements
 keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
 keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
-keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
--- keymap.set('n', '<leader>+', '<cmd>vertical resize +5<cr>', opts)
--- keymap.set('n', '<leader>-', '<cmd>vertical resize -5<cr>', opts)
 keymap.set('n', '+', '<cmd>vertical resize +5<cr>', opts)
 keymap.set('n', '-', '<cmd>vertical resize -5<cr>', opts)
 keymap.set('n', '<leader>+', '<cmd>horizontal resize +2<cr>', opts)
 keymap.set('n', '<leader>-', '<cmd>horizontal resize -2<cr>', opts)
 keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
+
+-- normal mode keymaps
+keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
+keymap.set("n", "a", "A", opts)
+keymap.set("n", ">", ">>")
+keymap.set("n", "<", "<<")
+keymap.set('n', '<CR>', ':w<CR>')
+keymap.set('n', 'q', ':q<CR>')
+keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>")
 keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>")
 keymap.set("n", "<leader>s", ":set invspell<CR>")
 keymap.set("n", "<leader>ss", "z=")
+keymap.set('n', '<leader><CR>', ':x<CR>')
+keymap.set("v", "<leader>l", ":norm Hi")
+keymap.set("n", "<leader>lo", ':lua require("nabla").enable_virt()<CR>', silent)
+keymap.set("n", "<leader>lf", ':lua require("nabla").disable_virt()<CR>', silent)
+
+-- command mode
+keymap.set("c", "qq", "q!", opts)
+
+-- insert mode
+keymap.set('i', 'jj', '<ESC>')
 
 
--- keymap.set("n", "<leader>v", ":vs<cr>", opts)
+
+--------------------------------------------------------------------------------
+-- git diff
+
 keymap.set("n", "<leader>dg1", ":diffget LOCAL")
 keymap.set("n", "<leader>dg2", ":diffget BASE")
 keymap.set("n", "<leader>dg3", ":diffget REMOTE")
 keymap.set("n", "<leader>dgo", "zo")
-keymap.set("v", "<leader>l", ":norm Hi")
-
-keymap.set("n", ">", ">>")
-keymap.set("n", "<", "<<")
-
-
-keymap.set('i', 'jj', '<ESC>')
-keymap.set('n', '<CR>', ':w<CR>')
-keymap.set('n', '<leader><CR>', ':x<CR>')
-keymap.set('n', 'q', ':q<CR>')
 
 
 
--- keymap.set("n", "<tab>", ">>", opts)
--- keymap.set("n", "<s-Tab>", "<<", opts)
--- keymap.set("v", "<tab>", ">", opts)
--- keymap.set("v", "<s-Tab>", "<", opts)
-
+--------------------------------------------------------------------------------
+-- python
 
 
 run_python = function()

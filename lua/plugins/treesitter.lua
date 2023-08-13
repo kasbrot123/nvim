@@ -19,15 +19,15 @@ treesitter.setup({
     -- check with TSInstallInfo
     -- install manually with TSInstall <package>
     ensure_installed = {
-        -- "html",
-        -- "vim",
-        -- "bash",
-        -- "latex",
-        -- "lua",
-        -- "python",
-        -- "markdown",
-        -- "gitignore",
-        -- "xml",
+        "html",
+        "vim",
+        "bash",
+        "latex",
+        "lua",
+        "python",
+        "markdown",
+        "gitignore",
+        "xml"
     },
 
     -- Automatically install missing parsers when entering buffer

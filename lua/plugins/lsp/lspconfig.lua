@@ -10,11 +10,7 @@ if not cmp_nvim_lsp_status then
     return
 end
 
--- -- import typescript plugin safely
--- local typescript_setup, typescript = pcall(require, "typescript")
--- if not typescript_setup then
---   return
--- end
+
 
 local keymap = vim.keymap -- for conciseness
 
@@ -37,12 +33,12 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
     keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
-    -- typescript specific keymaps (e.g. rename file and update imports)
-    if client.name == "tsserver" then
-        keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-        keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
-        keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
-    end
+    -- -- typescript specific keymaps (e.g. rename file and update imports)
+    -- if client.name == "tsserver" then
+    --     keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
+    --     keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
+    --     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
+    -- end
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
@@ -59,11 +55,12 @@ end
 
 -- #########################################
 -- configure the lsp servers
+-- -> recommendation: install via :Mason
 
 -- configure python server
 lspconfig["pyright"].setup({
     capabilities = capabilities,
-    -- on_attach = on_attach,
+    -- on_attach = on_attach, -- the keymaps are attached to that
 })
 
 -- #########################################
@@ -79,7 +76,6 @@ lspconfig["pyright"].setup({
 --     capabilities = capabilities,
 --     -- on_attach = on_attach,
 -- })
---
 --
 --
 -- -- configure html server
