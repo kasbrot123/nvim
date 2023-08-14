@@ -18,16 +18,18 @@ treesitter.setup({
     -- ensure these language parsers are installed
     -- check with TSInstallInfo
     -- install manually with TSInstall <package>
+
+    -- to preinstall gcc must be supported, and on windows it is typically not
     ensure_installed = {
-        "html",
-        "vim",
-        "bash",
-        "latex",
-        "lua",
-        "python",
-        "markdown",
-        "gitignore",
-        "xml"
+        -- "html",
+        -- "vim",
+        -- "bash",
+        -- "latex",
+        -- "lua",
+        -- "python",
+        -- "markdown",
+        -- "gitignore",
+        -- "xml"
     },
 
     -- Automatically install missing parsers when entering buffer
