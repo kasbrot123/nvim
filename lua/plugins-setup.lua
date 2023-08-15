@@ -63,13 +63,28 @@ return packer.startup(function(use)
     -- for undistracted writing
     use("junegunn/goyo.vim")
 
+    -- undotree for better file history, deactivate swapfiles
+    use("mbbill/undotree")
+
+    -- measure the startup time
+    use("dstein64/vim-startuptime")
+
+    -- formulas shown prettier
+    use('jbyuki/nabla.nvim')
+
     -- terminal 
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end}
 
+    -- LSP CONFIG AND STUFF
+    --
     -- configuring lsp servers
     use("neovim/nvim-lspconfig") -- easily configure language servers
+
+    -- managing & installing lsp servers, linters & formatters
+    use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
+    use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
     -- autocompletion
     use("hrsh7th/nvim-cmp") -- completion plugin
@@ -82,17 +97,6 @@ return packer.startup(function(use)
     use("L3MON4D3/LuaSnip") -- snippet engine
     use("saadparwaiz1/cmp_luasnip") -- for autocompletion, connection to luasnip and cmp
     use("rafamadriz/friendly-snippets") -- useful snippets for diff. languages
-    --
-
-    -- managing & installing lsp servers, linters & formatters
-    use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-    use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
-    use({ "glepnir/lspsaga.nvim",
-        branch = "main",
-        config = function()
-            require('lspsaga').setup({})
-        end,
-    }) -- enhanced lsp uis
 
     -- formatting & linting
     use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -110,15 +114,6 @@ return packer.startup(function(use)
     -- auto closing
     use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
     use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
-
-    -- undotree for better file history, deactivate swapfiles
-    use("mbbill/undotree")
-
-    -- measure the startup time
-    use("dstein64/vim-startuptime")
-
-    -- formulas shown prettier
-    use('jbyuki/nabla.nvim')
 
 
     -- same as PackerSync
@@ -161,4 +156,12 @@ return packer.startup(function(use)
     -- use {'karb94/neoscroll.nvim', config = function()
     --     require("neoscroll").setup()
     -- end}
+    --
+    -- use({ "glepnir/lspsaga.nvim",
+    --     branch = "main",
+    --     config = function()
+    --         require('lspsaga').setup({})
+    --     end,
+    -- }) -- enhanced lsp uis
+
 end)
