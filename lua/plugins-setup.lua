@@ -77,6 +77,9 @@ return packer.startup(function(use)
         require("toggleterm").setup()
     end}
 
+    -- language translation
+    use("potamides/pantran.nvim")
+
     -- LSP CONFIG AND STUFF
     --
     -- configuring lsp servers
