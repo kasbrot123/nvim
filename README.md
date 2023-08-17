@@ -9,7 +9,7 @@ more plugins and possibilities. But it is a pain in the ass to configure...
 
 The nvim config needs some dependencies to work properly.
 
-~~- `npm` to install `pyright` as lsp server for python~~
+- ~~`npm` to install `pyright` as lsp server for python~~
 - pyright can also be installed via pip
 - `ripgrep` for telescope live_grep (windows choco)
 - `gcc` and `g++` are nice to have
@@ -25,9 +25,7 @@ Some installation guide how I installed neovim on my systems.
 systems, better build from source. The installation is pretty easy and well 
 explained on the github page. 
 
-[Github Build from source](https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source)
-
-[Github Quick Start](https://github.com/neovim/neovim/wiki/Building-Neovim)
+[Github Build from source](https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source), [Github Quick Start](https://github.com/neovim/neovim/wiki/Building-Neovim)
 
 ```
 sudo apt-get install ninja-build gettext cmake unzip curl
