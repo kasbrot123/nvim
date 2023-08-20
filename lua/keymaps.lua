@@ -55,9 +55,11 @@ keymap.set('i', 'jj', '<ESC>')
 --------------------------------------------------------------------------------
 -- git diff
 
-keymap.set("n", "<leader>dg1", ":diffget LOCAL")
-keymap.set("n", "<leader>dg2", ":diffget BASE")
-keymap.set("n", "<leader>dg3", ":diffget REMOTE")
+-- keymap.set("n", "gh", ":diffget LOCAL")
+-- keymap.set("n", "gl", ":diffget BASE")
+-- keymap.set("n", "gj", ":diffget REMOTE")
+keymap.set("n", "gh", ":diffget //2<CR>")
+keymap.set("n", "gl", ":diffget //3<CR>")
 keymap.set("n", "<leader>dgo", "zo")
 
 
