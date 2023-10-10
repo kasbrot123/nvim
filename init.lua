@@ -11,7 +11,7 @@ require("plugins.gitsigns")
 require("plugins.autopairs")
 require("plugins.lualine")
 require("plugins.treesitter")
--- require("plugins.image")
+require("plugins.translate")
 
 require("plugins.lsp.mason")
 require("plugins.lsp.lspconfig")

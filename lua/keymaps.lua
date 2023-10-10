@@ -8,7 +8,6 @@ local silent = { silent = true }
 --------------------------------------------------------------------------------
 -- my mappings
 
-
 -- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
 keymap.set({"n", "v"}, "H", "^", opts)
@@ -27,6 +26,7 @@ keymap.set('n', '<leader>-', '<cmd>horizontal resize -2<cr>', opts)
 keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
 
 -- normal mode keymaps
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toggle file explorer
 keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
 keymap.set("n", "a", "A", opts)
 keymap.set("n", ">", ">>")
@@ -52,15 +52,15 @@ keymap.set("c", "qq", "q!", opts)
 keymap.set('i', 'jj', '<ESC>')
 
 
-
 --------------------------------------------------------------------------------
 -- git diff
 
-keymap.set("n", "<leader>dg1", ":diffget LOCAL")
-keymap.set("n", "<leader>dg2", ":diffget BASE")
-keymap.set("n", "<leader>dg3", ":diffget REMOTE")
+-- keymap.set("n", "gh", ":diffget LOCAL")
+-- keymap.set("n", "gl", ":diffget BASE")
+-- keymap.set("n", "gj", ":diffget REMOTE")
+keymap.set("n", "gh", ":diffget //2<CR>")
+keymap.set("n", "gl", ":diffget //3<CR>")
 keymap.set("n", "<leader>dgo", "zo")
-
 
 
 --------------------------------------------------------------------------------
@@ -107,9 +107,6 @@ keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
 --------------------------------------------------------------------------------
 -- plugins
 
-
--- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toggle file explorer
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts) -- find files within current working directory, respects .gitignore
