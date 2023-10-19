@@ -69,7 +69,7 @@ keymap.set("n", "<leader>dgo", "zo")
 
 run_python = function()
     vim.cmd(':w')
-    vim.cmd('TermExec cmd="\\%run ' .. vim.fn.expand("%") .. '"') --vim.fn.expand("%"))
+    vim.cmd('TermExec cmd="\\%run ' .. vim.fn.expand("%F") .. '"') --vim.fn.expand("%"))
     -- vim.cmd('TermExec cmd=""')
     vim.cmd('wincmd l')
     vim.cmd('norm i')
