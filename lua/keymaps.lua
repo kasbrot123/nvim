@@ -31,8 +31,8 @@ keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
 keymap.set("n", "a", "A", opts)
 keymap.set("n", ">", ">>")
 keymap.set("n", "<", "<<")
-keymap.set('n', '<CR>', ':w<CR>')
-keymap.set('n', 'q', ':q<CR>')
+-- keymap.set('n', '<CR>', ':w<CR>')
+-- keymap.set('n', 'q', ':q<CR>')
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts)
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
@@ -49,7 +49,7 @@ keymap.set("n", "<leader>lf", ':lua require("nabla").disable_virt()<CR>', silent
 keymap.set("c", "qq", "q!", opts)
 
 -- insert mode
-keymap.set('i', 'jj', '<ESC>')
+-- keymap.set('i', 'jj', '<ESC>')
 
 
 --------------------------------------------------------------------------------
