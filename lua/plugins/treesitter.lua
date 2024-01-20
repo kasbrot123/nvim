@@ -6,14 +6,17 @@ end
 
 -- configure treesitter
 treesitter.setup({
-    -- enable syntax highlighting
     highlight = {
-        enable = true,
+        enable = true, -- enable syntax highlighting
     },
-    -- enable indentation
-    indent = { enable = true },
-    -- enable autotagging (w/ nvim-ts-autotag plugin)
-    autotag = { enable = true },
+
+    indent = { 
+        enable = true, -- enable indentation
+    },
+
+    autotag = {
+        enable = true, -- enable autotagging (w/ nvim-ts-autotag plugin)
+    },
 
     -- ensure these language parsers are installed
     -- check with TSInstallInfo
