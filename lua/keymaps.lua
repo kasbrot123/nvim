@@ -64,12 +64,10 @@ keymap.set("n", "<leader>dgo", "zo")
 
 
 --------------------------------------------------------------------------------
--- python
-
+-- terminal & python
 
 run_python = function()
     vim.cmd(':w')
-
     vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
     vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%F") .. '"') --vim.fn.expand("%"))
 
@@ -82,7 +80,6 @@ run_visual = function()
     vim.cmd('norm i')
     vim.cmd('TermExec cmd=""')
 end
-
 
 
 
@@ -99,17 +96,6 @@ keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical<c
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
 keymap.set("v", "<F5>", ":2ToggleTermSendVisualLines<cr>", opts)
-
--- python shortcuts
--- keymap.set("n", "<leader>op", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
--- keymap.set("n", "<leader>p", "<cmd>lua run_python()<CR>", opts)
-
--- this is the preferred solution but it did not work out
--- keymap.set("v", "<leader>p", "<cmd>lua run_visual()<CR>", opts)
-
--- old solution, worked on raspi
--- keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts) -- selection only in one line
--- keymap.set("v", "<leader>p", ":ToggleTermSendVisualLines<cr>", opts)
 
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
