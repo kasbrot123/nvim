@@ -88,7 +88,7 @@ keymap.set("n", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
 keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
-keymap.set("v", "<F5>", ":2ToggleTermSendVisualLines<cr>", opts)
+keymap.set("v", "<F5>", "<cmd>ToggleTermSendVisualLines 2<cr>", opts)
 
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
