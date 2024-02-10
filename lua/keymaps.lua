@@ -69,53 +69,69 @@ keymap.set("n", "<leader>dgo", "zo")
 
 run_python = function()
     vim.cmd(':w')
-    vim.cmd('TermExec cmd="\\%run ' .. vim.fn.expand("%F") .. '"') --vim.fn.expand("%"))
+
+    vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
+    vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%F") .. '"') --vim.fn.expand("%"))
     -- vim.cmd('TermExec cmd=""')
-    vim.cmd('wincmd l')
-    vim.cmd('norm i')
-    vim.cmd('TermExec cmd=""')
+--
+-- von mir auskommentiert
+    -- vim.cmd('wincmd l')
+    -- vim.cmd('norm i')
+    -- vim.cmd('TermExec cmd=""')
+
     -- vim.cmd('norm <CR>')
 end
 
 
 run_visual = function()
-    vim.cmd('ToggleTermSendVisualSelection')
+    vim.cmd('2ToggleTermSendVisualSelection')
     vim.cmd('wincmd l')
     vim.cmd('norm i')
     vim.cmd('TermExec cmd=""')
 end
 
 
-keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=vertical<cr>", opts)
+
+
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
+keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+keymap.set("t", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
+
+keymap.set("n", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
+keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical<cr>', opts)
+keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
+keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
+keymap.set("v", "<F5>", ":2ToggleTermSendVisualLines<cr>", opts)
 
 -- python shortcuts
-keymap.set("n", "<leader>op", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
-keymap.set("n", "<leader>p", "<cmd>lua run_python()<CR>", opts)
+-- keymap.set("n", "<leader>op", '<cmd>TermExec cmd="ipython" size=40 direction=vertical<CR>', opts)
+-- keymap.set("n", "<leader>p", "<cmd>lua run_python()<CR>", opts)
 
 -- this is the preferred solution but it did not work out
 -- keymap.set("v", "<leader>p", "<cmd>lua run_visual()<CR>", opts)
 
 -- old solution, worked on raspi
-keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts)
-
+-- keymap.set("v", "<leader>p", ":ToggleTermSendVisualSelection<cr>", opts) -- selection only in one line
+-- keymap.set("v", "<leader>p", ":ToggleTermSendVisualLines<cr>", opts)
 
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
 
 
 --------------------------------------------------------------------------------
--- plugins
+-- telescope plugin
 
-
--- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts) -- find files within current working directory, respects .gitignore
 keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts) -- find string in current working directory as you type
 keymap.set("n", "<leader>fs", "<cmd>Telescope spell_suggest<cr>", opts)
--- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts) -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts) -- list open buffers in current neovim instance
--- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts) -- list available help tags
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts) -- list available help tags
+-- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts) -- find string under cursor in current working directory
+-- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts) -- list available help tags
 
 -- telescope git commands (not on youtube nvim video, opts)
 keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
@@ -124,8 +140,6 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts) -- list al
 -- keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts) -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list current changes per file with diff preview ["gs" for git status]
 
--- restart lsp server (not on youtube nvim video, opts)
-keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
 
 --------------------------------------------------------------------------------
@@ -145,3 +159,5 @@ keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to 
 keymap.set("n", "<leader>h", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
+-- restart lsp server (not on youtube nvim video, opts)
+keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
