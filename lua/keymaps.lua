@@ -72,14 +72,7 @@ run_python = function()
 
     vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
     vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%F") .. '"') --vim.fn.expand("%"))
-    -- vim.cmd('TermExec cmd=""')
---
--- von mir auskommentiert
-    -- vim.cmd('wincmd l')
-    -- vim.cmd('norm i')
-    -- vim.cmd('TermExec cmd=""')
 
-    -- vim.cmd('norm <CR>')
 end
 
 
