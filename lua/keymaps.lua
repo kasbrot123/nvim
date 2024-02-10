@@ -109,15 +109,12 @@ keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts) -- find stri
 keymap.set("n", "<leader>fs", "<cmd>Telescope spell_suggest<cr>", opts)
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts) -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts) -- list available help tags
+keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
+keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list current changes per file with diff preview ["gs" for git status]
 -- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts) -- find string under cursor in current working directory
 -- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts) -- list available help tags
-
--- telescope git commands (not on youtube nvim video, opts)
-keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-
 -- keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", opts) -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 -- keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts) -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list current changes per file with diff preview ["gs" for git status]
 
 
 
