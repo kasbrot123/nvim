@@ -4,6 +4,13 @@ if not status then
     return
 end
 
+local status, treesitter_compiler = pcall(require, "nvim-treesitter.compiler")
+if not status then
+    return
+end
+
+treesitter_compiler.compilers = {"gcc"}
+
 -- configure treesitter
 treesitter.setup({
     highlight = {
