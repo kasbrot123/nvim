@@ -6,7 +6,7 @@ local silent = { silent = true }
 
 
 --------------------------------------------------------------------------------
--- my mappings
+-- basic mappings
 
 -- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
@@ -14,6 +14,7 @@ keymap.set({"n", "v"}, "H", "^", opts)
 keymap.set({"n", "v"}, "L", "$", opts)
 keymap.set({"n", "v"}, "J", "<C-d>", opts)
 keymap.set({"n", "v"}, "K", "<C-u>", opts)
+
 -- window movements
 keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
@@ -31,36 +32,28 @@ keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
 keymap.set("n", "a", "A", opts)
 keymap.set("n", ">", ">>")
 keymap.set("n", "<", "<<")
--- keymap.set('n', '<CR>', ':w<CR>')
--- keymap.set('n', 'q', ':q<CR>')
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
-keymap.set("n", "<leader>v", "<C-v>", opts)
+keymap.set("n", "<leader>v", "<C-v>", opts) -- windows terminal
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>")
 keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>")
 keymap.set("n", "<leader>s", ":set invspell<CR>")
 keymap.set("n", "<leader>ss", "z=")
-keymap.set('n', '<leader><CR>', ':x<CR>')
 keymap.set("v", "<leader>l", ":norm Hi")
-keymap.set("n", "<leader>lo", ':lua require("nabla").enable_virt()<CR>', silent)
-keymap.set("n", "<leader>lf", ':lua require("nabla").disable_virt()<CR>', silent)
 
 -- command mode
 keymap.set("c", "qq", "q!", opts)
-
--- insert mode
--- keymap.set('i', 'jj', '<ESC>')
 
 
 --------------------------------------------------------------------------------
 -- git diff
 
--- keymap.set("n", "gh", ":diffget LOCAL")
--- keymap.set("n", "gl", ":diffget BASE")
--- keymap.set("n", "gj", ":diffget REMOTE")
 keymap.set("n", "gh", ":diffget //2<CR>")
 keymap.set("n", "gl", ":diffget //3<CR>")
 keymap.set("n", "<leader>dgo", "zo")
+-- keymap.set("n", "gh", ":diffget LOCAL")
+-- keymap.set("n", "gl", ":diffget BASE")
+-- keymap.set("n", "gj", ":diffget REMOTE")
 
 
 --------------------------------------------------------------------------------
@@ -122,9 +115,9 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list cur
 -- maps for autocompletion
 
 
+keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
@@ -137,3 +130,15 @@ keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on
 
 -- restart lsp server (not on youtube nvim video, opts)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+
+--------------------------------------------------------------------------------
+-- old keymaps I might use again
+
+
+-- keymap.set('n', '<CR>', ':w<CR>')
+-- keymap.set('n', 'q', ':q<CR>')
+-- keymap.set('n', '<leader><CR>', ':x<CR>')
+-- keymap.set("n", "<leader>lo", ':lua require("nabla").enable_virt()<CR>', silent)
+-- keymap.set("n", "<leader>lf", ':lua require("nabla").disable_virt()<CR>', silent)
+-- keymap.set('i', 'jj', '<ESC>') -- normal mode without escape
