@@ -112,21 +112,47 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list cur
 
 
 --------------------------------------------------------------------------------
--- maps for autocompletion
+-- maps for autocompletion & ls
 
 
-keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
-keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-keymap.set("n", "<leader>h", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+keymap.set("n", "gr", vim.lsp.buf.rename) -- smart renaming with lsp
+keymap.set("n", "gh", vim.lsp.buf.hover) -- help from lsp
+keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
+keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
+keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+
+
+-- -- every occurence of the word in file
+-- keymap.set("n", "<leader>1", "<cmd>Telescope lsp_references<CR>", opts)
+--
+-- -- every diagnostics, e.g. there is a problem, a module is not imported etc.
+-- keymap.set("n", "<leader>2", "<cmd>Telescope diagnostics<CR>", opts)
+-- -- 
+-- -- print(michi) -> jumps to line where michi = 1
+-- keymap.set("n", "<leader>4", "<cmd>Telescope lsp_definitions<CR>", opts)
+--
+-- -- michi = 1 -> jumps to int definitions since michi is type of int
+-- keymap.set("n", "<leader>5", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+--
+-- -- suggests you code changes like 'import time' if time is not there
+-- -- keymap.set("n", "<leader>yd", vim.lsp.buf.code_action) -- no code action for pyright
+-- -- keymap.set("n", "<leader>3", "<cmd>Telescope lsp_implementations<CR>", opts)
+
+
+
+-- keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+-- keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
+-- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
+-- keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
+-- keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
+-- keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
+-- keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
+-- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
+-- keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
+-- keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
+-- keymap.set("n", "<leader>h", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
+-- keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
 -- restart lsp server (not on youtube nvim video, opts)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
