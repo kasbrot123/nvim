@@ -41,8 +41,10 @@ keymap.set("n", "<leader>s", ":set invspell<CR>")
 keymap.set("n", "<leader>ss", "z=")
 keymap.set("v", "<leader>l", ":norm Hi")
 
--- command mode
+-- command mode, force quit, save with double hit
 keymap.set("c", "qq", "q!", opts)
+keymap.set("c", "ww", "w!", opts)
+keymap.set("c", "xx", "x!", opts)
 
 
 --------------------------------------------------------------------------------
