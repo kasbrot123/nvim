@@ -35,6 +35,11 @@ lspconfig["pyright"].setup({
     -- on_attach = on_attach, -- the keymaps are attached to that
 })
 
+lspconfig["lua_ls"].setup({
+    capabilities = capabilities,
+    -- on_attach = on_attach, -- the keymaps are attached to that
+})
+
 -- #########################################
 -- other servers which I don't need
 --

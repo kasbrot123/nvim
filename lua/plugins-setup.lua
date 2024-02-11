@@ -82,13 +82,13 @@ return packer.startup(function(use)
 
     -- LSP CONFIG AND STUFF
     --
-    -- configuring lsp servers
-    use("neovim/nvim-lspconfig") -- easily configure language servers
 
     -- managing & installing lsp servers, linters & formatters
     use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
     use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
+    -- configuring lsp servers
+    use("neovim/nvim-lspconfig") -- easily configure language servers
     -- autocompletion
     use("hrsh7th/nvim-cmp") -- completion plugin
     use("hrsh7th/cmp-buffer") -- source for text in buffer

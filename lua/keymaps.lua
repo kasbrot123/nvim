@@ -116,7 +116,7 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list cur
 
 
 keymap.set("n", "gr", vim.lsp.buf.rename) -- smart renaming with lsp
-keymap.set("n", "gh", vim.lsp.buf.hover) -- help from lsp
+keymap.set("n", "ge", vim.lsp.buf.hover) -- help from lsp, e for "Explain"
 keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
