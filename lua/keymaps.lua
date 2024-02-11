@@ -62,8 +62,7 @@ keymap.set("n", "<leader>dgo", "zo")
 run_python = function()
     vim.cmd(':w')
     vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
-    vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%F") .. '"') --vim.fn.expand("%"))
-
+    vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%:p") .. '"') --vim.fn.expand("%"))
 end
 
 
