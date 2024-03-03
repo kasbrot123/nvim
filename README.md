@@ -5,28 +5,25 @@ This is my personal neovim config build over time from several sources.
 
 ## Install
 
-Get nvim for Linux or Windows:
+### Installation of Nvim
 
-- Linux: Install from source, go to github
-- Windows: Install binary, also github
+For Linux and Windows: go to github and see for documentation.
 
-### Config Repository
+### 1. Clone Repo
 
-Clone the repository into your config folder.
-When starting nvim, it should auto install all the packages.
+Clone the repository into your config folder, start nvim.
 
-### LSP Servers
+### 2. Software dependencies
 
-Mason installs the LSP servers but it needs some tools to do that:
+- `ripgrep` (Windows: choco)
+- `gcc` and `g++`
+- `npm`
+- `pip3` (manual installation for pyright)
 
-- `npm` (Common on linux systems, not so common on Windows systems)
-- `gcc` and `g++` (native on linux, Windows needs installation)
 
-- `pip3` (sometimes servers can be manually installed by pip3)
-
+### 3. Configure LSP Servers
 
 To use the LSP servers you need to specify the servers in `lua/plugins/lsp/lspconfig.lua`
-
 
 `
 -- configure python server
@@ -36,59 +33,15 @@ lspconfig["pyright"].setup({
 })
 `
 
+### 4. Treesitter (`:TSUpdate`, `:TSInstall <language>`)
 
+Install treesitter syntax highlighting in the command line, it is easier and not
+so anoying when some dependencies are not installed. 
 
-### Ripgrep
-
-Ripgrep is needed for Telescope
-
-Linux:
 `
-sudo apt install ripgrep
+:TSInstall vim markdown python ...
 `
 
-Windows:
-`
-choco install ripgrep
-`
-
-
-## Dependencies
-
-The nvim config needs some dependencies to work properly.
-
-- ~~`npm` to install `pyright` as lsp server for python~~
-- pyright can also be installed via pip
-- `ripgrep` for telescope live_grep (windows choco)
-- `gcc` and `g++` are nice to have
-
-
-## Install Guide
-
-Some installation guide how I installed neovim on my systems.
-
-### Linux
-
-- **Build Neovim from source**, to get the latest version of neovim on linux 
-systems, better build from source. The installation is pretty easy and well 
-explained on the github page. 
-
-[Github Build from source](https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source), [Github Quick Start](https://github.com/neovim/neovim/wiki/Building-Neovim)
-
-```
-sudo apt-get install ninja-build gettext cmake unzip curl
-git clone https://github.com/neovim/neovim
-cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
-```
-
-- **Package manager**, most package managers can install neovim but since neovim 
-is constantly under development, they do not support the latest releases. 
-
-### Windows
-
-- **Installation via binary**, there is a release page on github (neovim) where
-binaries for windows with the latest versions are released. 
 
 
 
