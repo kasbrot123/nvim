@@ -1,11 +1,11 @@
-# My *nvim* Config 
+# My **nvim** Config 
 
 This is my personal neovim config build over time from several sources.
 
 
 ## Install
 
-### Installation of Nvim
+### 0. Installation of Nvim
 
 For Linux and Windows: go to github and see for documentation.
 
@@ -44,8 +44,6 @@ so anoying when some dependencies are not installed.
 :TSInstall vim markdown python ...
 
 ```
-
-
 
 
 ## Personal Thoughts
