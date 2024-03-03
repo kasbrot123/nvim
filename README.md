@@ -25,22 +25,25 @@ Clone the repository into your config folder, start nvim.
 
 To use the LSP servers you need to specify the servers in `lua/plugins/lsp/lspconfig.lua`
 
-`
+```lua
 -- configure python server
 lspconfig["pyright"].setup({
     capabilities = capabilities,
     -- on_attach = on_attach, -- the keymaps are attached to that
 })
-`
+
+```
 
 ### 4. Treesitter (`:TSUpdate`, `:TSInstall <language>`)
 
 Install treesitter syntax highlighting in the command line, it is easier and not
 so anoying when some dependencies are not installed. 
 
-`
+
+```
 :TSInstall vim markdown python ...
-`
+
+```
 
 
 
