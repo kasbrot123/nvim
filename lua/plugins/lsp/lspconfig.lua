@@ -45,6 +45,11 @@ lspconfig["texlab"].setup({
     -- on_attach = on_attach, -- the keymaps are attached to that
 })
 
+lspconfig["rust_analyzer"].setup({
+    capabilities = capabilities,
+    -- on_attach = on_attach, -- the keymaps are attached to that
+})
+
 -- #########################################
 -- other servers which I don't need
 --
