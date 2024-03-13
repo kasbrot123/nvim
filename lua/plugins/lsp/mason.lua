@@ -25,7 +25,9 @@ mason_lspconfig.setup({
     -- list of servers for mason to install
     ensure_installed = {
         "pyright",
-        -- "luau_lsp",
+        "lemminx",
+        "texlab",
+        "lua_ls",
         -- "tsserver",
         -- "html",
         -- "cssls",
