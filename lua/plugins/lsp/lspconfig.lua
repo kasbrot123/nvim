@@ -67,6 +67,12 @@ lspconfig["html"].setup({
     -- on_attach = on_attach, -- the keymaps are attached to that
 })
 
+-- configure python server
+lspconfig["clangd"].setup({
+    capabilities = capabilities,
+    -- on_attach = on_attach, -- the keymaps are attached to that
+})
+
 -- #########################################
 -- other servers which I don't need
 --
