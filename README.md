@@ -43,7 +43,6 @@ so anoying when some dependencies are not installed.
 
 ```
 :TSInstall vim markdown python ...
-
 ```
 
 
@@ -59,7 +58,7 @@ sometimes do not work anymore. When installing a package, it will not work for
 the first time. Error warnings at startup and nothing works. I hate it. 
 It is like writing your own text editor with the same editor. 
 
-Update 2024-08-17
+_Update 2024-08-17_
 Maybe it is better now since neovim is getting more stable and used by more and 
 more people. Still most of the things above are true.
 
