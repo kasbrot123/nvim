@@ -2,6 +2,7 @@
 
 This is my personal neovim config build over time from several sources.
 
+It was first private but I decided to put it public (as it is).
 
 ## Install
 
@@ -42,7 +43,6 @@ so anoying when some dependencies are not installed.
 
 ```
 :TSInstall vim markdown python ...
-
 ```
 
 
@@ -51,9 +51,15 @@ so anoying when some dependencies are not installed.
 I used vim before and started to move my config to nvim since it offers a lot 
 more plugins and possibilities. But it is a pain in the ass to configure...
 The integration of lua really upgrades vim but at the same time it is the worst
-in terms of configuration. Everyone handles things differently and thats why 
+in terms of configuration. Everyone handles things differently and that's why 
 it is out of control to easy configure your text editor. Every package is
-not maintained after a year, the plug in managers changes regularly, configs 
+not maintained after a year, the plugin managers changes regularly, configs 
 sometimes do not work anymore. When installing a package, it will not work for 
 the first time. Error warnings at startup and nothing works. I hate it. 
 It is like writing your own text editor with the same editor. 
+
+_Update 2024-08-17_
+Maybe it is better now since neovim is getting more stable and used by more and 
+more people. Still most of the things above are true.
+
+

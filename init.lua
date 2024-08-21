@@ -12,6 +12,7 @@ require("plugins.autopairs")
 require("plugins.lualine")
 require("plugins.treesitter")
 require("plugins.translate")
+require("plugins.glow")
 
 require("plugins.lsp.mason")
 require("plugins.lsp.lspconfig")

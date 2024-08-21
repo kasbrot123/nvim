@@ -72,6 +72,9 @@ return packer.startup(function(use)
     -- formulas shown prettier
     use('jbyuki/nabla.nvim')
 
+    -- markdown preview
+    use("ellisonleao/glow.nvim")
+
     -- terminal 
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
