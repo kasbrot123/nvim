@@ -13,6 +13,7 @@ opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
 opt.wrap = true
+opt.lbr = true
 
 -- for chars that are normally not visible
 opt.list = true
