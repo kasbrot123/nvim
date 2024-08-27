@@ -38,7 +38,8 @@ keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
 keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>")
 keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>")
 keymap.set("n", "<leader>s", ":set invspell<CR>")
-keymap.set("n", "<leader>ss", "z=")
+keymap.set("n", "<leader>ss", "1z=")
+keymap.set("n", "<leader>sa", "z=")
 keymap.set("v", "<leader>l", ":norm Hi")
 
 -- command mode, force quit, save with double hit
