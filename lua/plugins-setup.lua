@@ -85,6 +85,12 @@ return packer.startup(function(use)
 
     -- LSP CONFIG AND STUFF
     --
+    use({"nvimdev/lspsaga.nvim",
+        after = 'nvim-lspconfig',
+        config = function()
+            require("lspsaga").setup({})
+        end,
+    })
 
     -- managing & installing lsp servers, linters & formatters
     use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters

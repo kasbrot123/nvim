@@ -51,9 +51,10 @@ keymap.set("c", "xx", "x!", opts)
 --------------------------------------------------------------------------------
 -- git diff
 
-keymap.set("n", "gh", ":diffget //2<CR>")
-keymap.set("n", "gl", ":diffget //3<CR>")
-keymap.set("n", "<leader>dgo", "zo")
+-- keymap.set("n", "gh", ":diffget //2<CR>")
+-- keymap.set("n", "gl", ":diffget //3<CR>")
+-- keymap.set("n", "<leader>dgo", "zo")
+--
 -- keymap.set("n", "gh", ":diffget LOCAL")
 -- keymap.set("n", "gl", ":diffget BASE")
 -- keymap.set("n", "gj", ":diffget REMOTE")
@@ -123,6 +124,7 @@ keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
 keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 
 
 -- -- every occurence of the word in file
