@@ -65,6 +65,7 @@ keymap.set("c", "xx", "x!", opts)
 
 run_python = function()
     vim.cmd(':w')
+    vim.cmd('2TermExec cmd="\\%reset -f "') -- delete workspace
     vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
     vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%:p") .. '"') --vim.fn.expand("%"))
 end
@@ -88,7 +89,7 @@ keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 keymap.set("t", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
 
 keymap.set("n", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
-keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical<cr>', opts)
+keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical size=60<cr>', opts)
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
 keymap.set("v", "<F5>", "<cmd>ToggleTermSendVisualLines 2<cr>", opts)
