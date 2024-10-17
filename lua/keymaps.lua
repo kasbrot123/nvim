@@ -51,6 +51,9 @@ keymap.set("c", "xx", "x!", opts)
 --------------------------------------------------------------------------------
 -- git diff
 
+keymap.set("n", "<leader>d", ":windo diffthis<CR>")
+keymap.set("n", "<leader>dd", ":diffoff!<CR>")
+
 -- keymap.set("n", "gh", ":diffget //2<CR>")
 -- keymap.set("n", "gl", ":diffget //3<CR>")
 -- keymap.set("n", "<leader>dgo", "zo")
@@ -68,16 +71,45 @@ run_python = function()
     vim.cmd('2TermExec cmd="\\%reset -f "') -- delete workspace
     vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
     vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%:p") .. '"') --vim.fn.expand("%"))
+
+    -- solution found in the issues of toggleterm
+    local IPYTHON_TERMINAL_WINDOW = 2
+    ipython_terminal = require("toggleterm.terminal").get(IPYTHON_TERMINAL_WINDOW)
+    -- ipython_terminal:focus()
+
+    local job_id = ipython_terminal.job_id
+    local enter_in_string = string.char(13)
+    vim.defer_fn(function()
+        vim.fn.chansend(job_id, enter_in_string)
+    end, 150)
 end
 
 
-run_visual = function()
-    vim.cmd('2ToggleTermSendVisualSelection')
-    vim.cmd('wincmd l')
-    vim.cmd('norm i')
-    vim.cmd('TermExec cmd=""')
-end
+-- run_visual = function()
+--     vim.cmd('2ToggleTermSendVisualSelection')
+--     vim.cmd('wincmd l')
+--     vim.cmd('norm i')
+--     vim.cmd('TermExec cmd=""')
+-- end
 
+local trim_spaces = false
+run_visual2 = function()
+-- vim.keymap.set("v", "<leader>b", function()
+    -- require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
+    -- require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
+    require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+
+    -- solution found in the issues of toggleterm
+    local IPYTHON_TERMINAL_WINDOW = 2
+    ipython_terminal = require("toggleterm.terminal").get(IPYTHON_TERMINAL_WINDOW)
+    -- ipython_terminal:focus()
+
+    local job_id = ipython_terminal.job_id
+    local enter_in_string = string.char(13)
+    vim.defer_fn(function()
+        vim.fn.chansend(job_id, enter_in_string)
+    end, 150)
+end
 
 
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
@@ -91,8 +123,8 @@ keymap.set("t", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
 keymap.set("n", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
 keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical size=60<cr>', opts)
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
-keymap.set("n", "<F5>", "<cmd>lua run_python()<CR>", opts)
-keymap.set("v", "<F5>", "<cmd>ToggleTermSendVisualLines 2<cr>", opts)
+keymap.set("v", "<leader>x", run_visual2, opts)
+keymap.set("n", "<leader>x", run_python, opts)
 
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
