@@ -92,7 +92,13 @@ end
 --     vim.cmd('TermExec cmd=""')
 -- end
 
-local trim_spaces = false
+if vim.fn.has('unix') then
+    local trim_spaces = true
+else
+    local trim_spaces = false
+end
+
+
 run_visual2 = function()
 -- vim.keymap.set("v", "<leader>b", function()
     -- require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
