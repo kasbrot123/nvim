@@ -92,10 +92,12 @@ end
 --     vim.cmd('TermExec cmd=""')
 -- end
 
-if vim.fn.has('unix') then
+if vim.fn.has('unix') == 1 then
     local trim_spaces = true
+    print('trim true')
 else
     local trim_spaces = false
+    print('trim false')
 end
 
 
