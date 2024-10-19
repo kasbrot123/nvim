@@ -72,38 +72,39 @@ return packer.startup(function(use)
     -- formulas shown prettier
     use('jbyuki/nabla.nvim')
 
-    -- markdown preview
-    use("ellisonleao/glow.nvim")
-
-    -- terminal 
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end}
-
     -- language translation
     use("potamides/pantran.nvim")
 
+    -- auto closing
+    use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+    use({"windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags, html
+
+    -- Diffview for git
+    use("sindrets/diffview.nvim")
+
+    -- terminal 
+    use({"akinsho/toggleterm.nvim", tag = '*'})
+
+
     -- LSP CONFIG AND STUFF
-    --
-    use({"nvimdev/lspsaga.nvim",
-        after = 'nvim-lspconfig',
-        config = function()
-            require("lspsaga").setup({})
-        end,
-    })
+    -- configuring lsp servers
+    use("neovim/nvim-lspconfig") -- easily configure language servers
+
+    -- a lot of features were replaced with other packes like telescope etc.
+    -- use({"nvimdev/lspsaga.nvim", after = 'nvim-lspconfig'})
+
+    -- vs-code like icons for autocompletion
+    use("onsails/lspkind.nvim")
 
     -- managing & installing lsp servers, linters & formatters
     use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
     use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
-    -- configuring lsp servers
-    use("neovim/nvim-lspconfig") -- easily configure language servers
     -- autocompletion
     use("hrsh7th/nvim-cmp") -- completion plugin
+    use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
     use("hrsh7th/cmp-buffer") -- source for text in buffer
     use("hrsh7th/cmp-path") -- source for file system paths
-    use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-    use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
     -- snippets
     use("L3MON4D3/LuaSnip") -- snippet engine
@@ -111,8 +112,8 @@ return packer.startup(function(use)
     use("rafamadriz/friendly-snippets") -- useful snippets for diff. languages
 
     -- formatting & linting
-    use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-    use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+    -- use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+    -- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
     -- treesitter configuration
     use({
@@ -123,59 +124,16 @@ return packer.startup(function(use)
         end,
     })
 
-    -- auto closing
-    use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
-    use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
-
-    -- Packer
-    use("sindrets/diffview.nvim")
+    -- use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
     -- same as PackerSync
     if packer_bootstrap then
         require("packer").sync()
     end
-
-
-    -- -------------------------------------------------------------------------
-    -- UNUSED PACKAGES
-
-    -- colorschemes
-    -- use('folke/tokyonight.nvim')
-    -- use({
-    --     'rose-pine/neovim',
-    --     as = 'rose-pine',
-    --     config = function()
-    --         vim.cmd('colorscheme rose-pine')
-    --     end
-    -- })
-
-    -- helps working with tags, quotes etc., did not use at all
-    -- use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
-
-    -- probably copied from somewhere, dont need it
-    -- use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
-
-    -- typescript lsp, dont write something in typescript
-    -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-
-    -- use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
-    --
-    -- use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
-    --
-    -- use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
-    --
-    -- use("szw/vim-maximizer") -- maximizes and restores current window
-    --
-    -- -- soft scroll
-    -- use {'karb94/neoscroll.nvim', config = function()
-    --     require("neoscroll").setup()
-    -- end}
-    --
-    -- use({ "glepnir/lspsaga.nvim",
-    --     branch = "main",
-    --     config = function()
-    --         require('lspsaga').setup({})
-    --     end,
-    -- }) -- enhanced lsp uis
 
 end)

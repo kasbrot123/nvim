@@ -1,6 +1,7 @@
 -- import lspsaga safely
 local saga_status, saga = pcall(require, "lspsaga")
 if not saga_status then
+    print('lspsaga plugin could not be loaded')
     return
 end
 

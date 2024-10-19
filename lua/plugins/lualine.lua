@@ -1,6 +1,7 @@
 -- import lualine plugin safely
 local status, lualine = pcall(require, "lualine")
 if not status then
+    print('lualine plugin could not be loaded')
     return
 end
 

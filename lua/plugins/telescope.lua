@@ -1,12 +1,14 @@
 -- import telescope plugin safely
 local telescope_setup, telescope = pcall(require, "telescope")
 if not telescope_setup then
+    print('telescope plugin could not be loaded')
     return
 end
 
 -- import telescope actions safely
 local actions_setup, actions = pcall(require, "telescope.actions")
 if not actions_setup then
+    print('telescope.actions plugin could not be loaded')
     return
 end
 

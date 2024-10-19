@@ -1,15 +1,19 @@
 -- import nvim-treesitter plugin safely
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
+    print('nvim-treesitter.configs plugin could not be loaded')
     return
 end
 
-local status, treesitter_compiler = pcall(require, "nvim-treesitter.compiler")
-if not status then
-    return
-end
+-- local status, treesitter_compiler = pcall(require, "nvim-treesitter.compiler")
+-- if not status then
+--     print("treesitter compiler not working")
+--     return
+-- end
+--
+-- print("compiler working")
 
-treesitter_compiler.compilers = {"gcc"}
+-- treesitter_compiler.compilers = {"gcc"}
 
 -- configure treesitter
 treesitter.setup({
@@ -43,5 +47,6 @@ treesitter.setup({
     },
 
     -- Automatically install missing parsers when entering buffer
+    -- autoinstall does not work smoothly so it is disabled
     auto_install = false,
 })

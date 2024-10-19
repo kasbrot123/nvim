@@ -1,4 +1,10 @@
-require("pantran").setup{
+local setup, pantran = pcall(require, "pantran")
+if not setup then
+    print('pantran plugin could not be loaded')
+    return
+end
+
+pantran.setup{
   -- Default engine to use for translation. To list valid engine names run
   -- `:lua =vim.tbl_keys(require("pantran.engines"))`.
   default_engine = "google",
