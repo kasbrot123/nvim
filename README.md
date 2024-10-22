@@ -1,49 +1,19 @@
-# My **nvim** Config 
+# My nvim Config 
 
-This is my personal neovim config build over time from several sources.
+This is my personal neovim config build over time from several sources. I tried 
+to stick with the default key settings as much as possible and I like it 
+minimalistic so it works on every machine. 
 
-It was first private but I decided to put it public (as it is).
 
-## Install
 
-### 0. Installation of Nvim
+## Software dependencies
 
-For Linux and Windows: go to github and see for documentation.
-
-### 1. Clone Repo
-
-Clone the repository into your config folder, start nvim.
-
-### 2. Software dependencies
-
-- `ripgrep` (Windows: choco)
-- `gcc` and `g++`
-- `npm`
+- `ripgrep` (Windows: choco), for fuzzy finding in Telescope
+- `gcc` and `g++`, for Mason, Treesitter, and other plugins I guess
+- `npm`, handy for LSP servers
 - `pip3` (manual installation for pyright)
 
 
-### 3. Configure LSP Servers
-
-To use the LSP servers you need to specify the servers in `lua/plugins/lsp/lspconfig.lua`
-
-```lua
--- configure python server
-lspconfig["pyright"].setup({
-    capabilities = capabilities,
-    -- on_attach = on_attach, -- the keymaps are attached to that
-})
-
-```
-
-### 4. Treesitter (`:TSUpdate`, `:TSInstall <language>`)
-
-Install treesitter syntax highlighting in the command line, it is easier and not
-so anoying when some dependencies are not installed. 
-
-
-```
-:TSInstall vim markdown python ...
-```
 
 
 ## Personal Thoughts
@@ -61,5 +31,13 @@ It is like writing your own text editor with the same editor.
 _Update 2024-08-17_
 Maybe it is better now since neovim is getting more stable and used by more and 
 more people. Still most of the things above are true.
+
+_Update 2024-10-22_
+As I more and more sharpen my config for neovim I think I get the syntax and
+structure why it is built up but it is still a mess with all the lua functions
+and personal and super personal config stuff. I plan to update my config once
+every year in October/November and leave it then. I am still working with
+packer as my plugin manager and I have nightmares thinking about switching to
+lazy. But I think there will be no way out...
 
 
