@@ -29,10 +29,12 @@ the first time. Error warnings at startup and nothing works. I hate it.
 It is like writing your own text editor with the same editor. 
 
 _Update 2024-08-17_
+
 Maybe it is better now since neovim is getting more stable and used by more and 
 more people. Still most of the things above are true.
 
 _Update 2024-10-22_
+
 As I more and more sharpen my config for neovim I think I get the syntax and
 structure why it is built up but it is still a mess with all the lua functions
 and personal and super personal config stuff. I plan to update my config once
