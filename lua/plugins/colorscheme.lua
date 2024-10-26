@@ -2,9 +2,11 @@
 -- in case it isn't installed
 
 local colorscheme_name = "colorscheme nightfly"
---colorscheme_name = "colorscheme tokyonight"
+-- local colorscheme_name = "colorscheme catppuccin"
+-- local colorscheme_name = "colorscheme tokyonight"
+
 local status, _ = pcall(vim.cmd, colorscheme_name)
 if not status then
-    print('colorscheme could not be loaded')
+    print(colorscheme_name .. ' could not be loaded')
     return
 end

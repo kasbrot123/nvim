@@ -37,6 +37,8 @@ return packer.startup(function(use)
 
     -- Colorscheme 
     use('bluz71/vim-nightfly-colors')
+    use({ "catppuccin/nvim", as = "catppuccin" })
+    use("folke/tokyonight.nvim")
 
     -- commenting with gc
     use("numToStr/Comment.nvim")
