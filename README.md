@@ -14,6 +14,31 @@ minimalistic so it works on every machine.
 - `pip3` (manual installation for pyright)
 
 
+### Treeshitter problems
+
+Treesitter does not work by default with my config, this is so anoying. You
+cannot read the help, after every key press you get an error. Something like
+this:
+
+```
+Error in decoration provider treesitter/highlighter.win
+```
+
+A fix might be:
+
+```
+:TSInstall vim vimdoc
+````
+
+And maybe you also need:
+
+```
+npm -g install tree-sitter-cli
+:TSInstall latex
+```
+
+
+
 
 
 ## Personal Thoughts
