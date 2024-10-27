@@ -27,6 +27,10 @@ On Windows use the installers. It is straight forward for both.
 4. Select something like this `**x86_64-13.2.0-release-win32-seh-msvcrt-rt_v11-rev1.7z**`
 
 
+*Note: I experienced errors when using the MinGW 32-bit version (or the
+compiler). It did not work with neovim treesitter*
+
+
 ### `ripgrep`
 
 - On Linux you can use your package manager.
