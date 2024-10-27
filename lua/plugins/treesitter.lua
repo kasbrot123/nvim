@@ -5,15 +5,7 @@ if not status then
     return
 end
 
--- local status, treesitter_compiler = pcall(require, "nvim-treesitter.compiler")
--- if not status then
---     print("treesitter compiler not working")
---     return
--- end
---
--- print("compiler working")
 
--- treesitter_compiler.compilers = {"gcc"}
 
 -- configure treesitter
 treesitter.setup({
