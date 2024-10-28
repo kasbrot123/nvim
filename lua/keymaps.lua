@@ -45,8 +45,6 @@ keymap.set("n", "<leader>ss", "1z=")
 keymap.set("n", "<leader>sa", "z=")
 keymap.set("n", "<leader>d", ":windo diffthis<CR>")
 keymap.set("n", "<leader>dd", ":diffoff!<CR>")
-keymap.set('n', 'n', 'nzz', { silent = true })
-keymap.set('n', 'N', 'Nzz', { silent = true })
 
 -- visual mode keymaps
 keymap.set("v", "<leader>l", ":norm Hi")
