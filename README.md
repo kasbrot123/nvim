@@ -8,13 +8,40 @@ minimalistic so it works on every machine.
 
 ## Software dependencies
 
-- `ripgrep` (Windows: choco), for fuzzy finding in Telescope
-- `gcc` and `g++`, for Mason, Treesitter, and other plugins I guess
-- `npm`, handy for LSP servers
-- `pip3` (manual installation for pyright)
+- `python` and `pip3`
+- `npm` (for LSP servers and stuff)
+- `gcc` and `g++` (for Mason, Treesitter, and other plugins I guess)
+- `ripgrep` (for fuzzy finding in Telescope)
 
 
-### Treeshitter problems
+### Python and nodejs
+
+On Windows use the installers. It is straight forward for both.
+
+
+### `gcc` and `g++`
+
+1. Search for MinGW-w64 and go to their homepage.
+2. Go to downloads (https://www.mingw-w64.org/downloads/)
+3. Search for mingw-w64 and go to their github page. 
+4. Select something like this `**x86_64-13.2.0-release-win32-seh-msvcrt-rt_v11-rev1.7z**`
+
+
+*Note: I experienced errors when using the MinGW 32-bit version (or the
+compiler). It did not work with neovim treesitter*
+
+
+### `ripgrep`
+
+- On Linux you can use your package manager.
+- On Windows the easiest way is via powershell:
+
+```powershell
+winget install BurntSushi.ripgrep.MSVC
+```
+
+
+## Treeshitter problems
 
 Treesitter does not work by default with my config, this is so anoying. You
 cannot read the help, after every key press you get an error. Something like
