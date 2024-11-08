@@ -85,7 +85,7 @@ To set the Language Mode of the machine to `FullLanguage` you can change the
 registry key from `4` to `8`.
 
 ```
-Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\__PSLockDownPolicy
 ```
 
 - `4`: `ConstrainedLanguage`
