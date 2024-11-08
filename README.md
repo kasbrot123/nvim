@@ -19,12 +19,13 @@ minimalistic so it works on every machine.
 On Windows use the installers. It is straight forward for both.
 
 
-### `gcc` and `g++`
+### `gcc` and `g++` (for Windows)
 
 1. Search for MinGW-w64 and go to their homepage.
 2. Go to downloads (https://www.mingw-w64.org/downloads/)
 3. Search for mingw-w64 and go to their github page. 
 4. Select something like this `**x86_64-13.2.0-release-win32-seh-msvcrt-rt_v11-rev1.7z**`
+5. Paste it into C:\ and set the global path variable.
 
 
 *Note: I experienced errors when using the MinGW 32-bit version (or the
@@ -64,7 +65,33 @@ npm -g install tree-sitter-cli
 :TSInstall latex
 ```
 
+## ConstrainedLanguage Mode
 
+On some Windows machines Mason cannot installe language servers when the
+ConstrainedLanguage mode is on. You can check the mode via the powershell:
+
+```
+$ExecutionContext.SessionState.LanguageMode
+```
+
+Example:
+
+```
+PS C:\Users\kasbrot123> $ExecutionContext.SessionState.LanguageMode
+ConstrainedLanguage
+```
+
+To set the Language Mode of the machine to `FullLanguage` you can change the
+registry key from `4` to `8`.
+
+```
+Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+```
+
+- `4`: `ConstrainedLanguage`
+- `8`: `FullLanguage`
+
+https://stackoverflow.com/questions/57032747/how-to-change-powershell-mode-to-fulllanguage-mode-from-constrained-mode
 
 
 
