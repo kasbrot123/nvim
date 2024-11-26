@@ -71,3 +71,31 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.diffopt:append("vertical")
 
 
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "TelescopePreviewerLoaded",
+--   callback = function(args)
+--     if args.data.filetype ~= "help" then
+--       vim.wo.number = true
+--     elseif args.data.bufname:match("*.png") then
+--       vim.wo.wrap = false
+--     end
+--   end,
+-- })
+
+-- vim.api.nvim_create_autocmd({"FileType"}, { pattern="markdown", group=optional_group, command="TSDisable highlight"})
+--
+-- vim.api.nvim_create_autocmd({"FileType"}, { pattern={"*.md", "*.c"}, group=optional_group, command="TSDisable highlight"})
+
+
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--     pattern = {"*.c", "*.h"},
+--     callback = function(ev)
+--         print(string.format('event fired: %s', vim.inspect(ev)))
+--     end
+-- })
+--
+--
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*.c", "*.h"},
+--   command = "echo 'Entering a C or C++ file'",
+-- })
