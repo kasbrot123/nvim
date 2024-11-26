@@ -10,7 +10,7 @@ end
 -- configure treesitter
 treesitter.setup({
     highlight = {
-        enable = true, -- enable syntax highlighting
+        enable = false, -- enable syntax highlighting
     },
 
     indent = { 
