@@ -8,6 +8,9 @@ local silent = { silent = true }
 --------------------------------------------------------------------------------
 -- basic mappings
 
+-- if you press leader it will move the cursor
+vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
+
 -- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
 keymap.set({"n", "v"}, "H", "^", opts)
