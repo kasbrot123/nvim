@@ -87,6 +87,9 @@ return packer.startup(function(use)
     -- terminal 
     use({"akinsho/toggleterm.nvim", tag = '*'})
 
+    -- Github Copilot (Test)
+    use("github/copilot.vim")
+
 
     -- LSP CONFIG AND STUFF
     -- configuring lsp servers
