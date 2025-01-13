@@ -54,6 +54,8 @@ vim.cmd([[
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
+-- opt.signcolumn = "auto:4" -- show sign column so that text doesn't shift
+-- auto for gitsigns and lsp signs, -> does not work always resizes
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- backspace

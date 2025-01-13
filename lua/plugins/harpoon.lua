@@ -10,7 +10,7 @@ harpoon:setup()
 -- REQUIRED
 
 -- <leader>a to apend files
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add(); print('Hook added') end)
 
 -- menue next to my "file tree button" <leader>e
 vim.keymap.set("n", "<leader>r", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
