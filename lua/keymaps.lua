@@ -80,11 +80,33 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 --------------------------------------------------------------------------------
 -- terminal & python
 
-run_python = function()
+local run_python = function()
     vim.cmd(':w')
-    vim.cmd('2TermExec cmd="\\%reset -f "') -- delete workspace
-    vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
-    vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%:p") .. '"') --vim.fn.expand("%"))
+    -- vim.cmd.write() -- another way
+
+    -- old solution
+    -- vim.cmd('2TermExec cmd="\\%reset -f "') -- delete workspace
+    -- vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
+    -- vim.cmd('2TermExec cmd="\\%cd %:p:h "') -- local workspace
+    -- vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%:p") .. '"') --vim.fn.expand("%"))
+
+    local cmd_reset = "%reset -f"
+    local folder_path = vim.fn.expand("%:p:h"):gsub("\\", "\\\\")
+    local cmd_cd = "%cd -q \"" .. folder_path .. "\""
+    local script_path = vim.fn.expand("%:p"):gsub("\\", "\\\\")
+    local cmd_run = "%run \"" .. script_path .. "\""
+    local full_command = cmd_reset .. "\n" .. cmd_cd .. "\n" .. cmd_run
+
+    local toggleterm = require("toggleterm")
+
+    -- every line it self
+    -- toggleterm.exec(cmd_reset, 2)
+    -- toggleterm.exec(cmd_cd, 2)
+    -- toggleterm.exec(cmd_run, 2)
+
+    -- or compact without lines in interpreter
+    toggleterm.exec(full_command, 2)
+
 
     -- solution found in the issues of toggleterm
     local IPYTHON_TERMINAL_WINDOW = 2
@@ -100,7 +122,7 @@ end
 
 
 local trim_spaces = false
-run_visual2 = function()
+local run_python_visual = function()
 -- vim.keymap.set("v", "<leader>b", function()
     -- require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
     -- require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
@@ -131,7 +153,7 @@ keymap.set("n", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
 keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical size=60<cr>', opts)
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<leader>x", run_python, opts)
-keymap.set("v", "<leader>x", run_visual2, opts)
+keymap.set("v", "<leader>x", run_python_visual, opts)
 
 keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
 keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
