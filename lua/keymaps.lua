@@ -9,7 +9,7 @@ local silent = { silent = true }
 -- basic mappings
 
 -- if you press leader it will move the cursor
-vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
+vim.keymap.set("n", "<Space>", "<Nop>", silent)
 
 -- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
@@ -33,21 +33,21 @@ keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toggle file explorer
 keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
 keymap.set("n", "a", "A", opts)
-keymap.set("n", ">", ">>")
-keymap.set("n", "<", "<<")
+keymap.set("n", ">", ">>", opts)
+keymap.set("n", "<", "<<", opts)
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts) -- windows terminal
-keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>")
-keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>")
-keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>")
-keymap.set("n", "<leader>s", ":set invspell<CR>")
-keymap.set("n", "<leader>ss", "1z=")
-keymap.set("n", "<leader>sa", "z=")
-keymap.set("n", "<leader>d", ":windo diffthis<CR>")
-keymap.set("n", "<leader>dd", ":diffoff!<CR>")
+keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>", opts)
+keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>", opts)
+keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>", opts)
+keymap.set("n", "<leader>s", ":set invspell<CR>", opts)
+keymap.set("n", "<leader>ss", "1z=", opts)
+keymap.set("n", "<leader>sa", "z=", opts)
+keymap.set("n", "<leader>d", ":windo diffthis<CR>", opts)
+keymap.set("n", "<leader>dd", ":diffoff!<CR>", opts)
 
 -- visual mode keymaps
-keymap.set("v", "<leader>l", ":norm Hi")
+keymap.set("v", "<leader>l", ":norm Hi", opts)
 
 -- command mode, force quit, save with double hit
 keymap.set("c", "qq", "q!", opts)
@@ -55,8 +55,8 @@ keymap.set("c", "ww", "w!", opts)
 keymap.set("c", "xx", "x!", opts)
 
 -- maps for autocompletion & ls
-keymap.set("n", "gr", vim.lsp.buf.rename) -- smart renaming with lsp
-keymap.set("n", "gh", vim.lsp.buf.hover) -- help from lsp, e for "Explain"
+keymap.set("n", "gr", vim.lsp.buf.rename, opts) -- smart renaming with lsp
+keymap.set("n", "gh", vim.lsp.buf.hover, opts) -- help from lsp, e for "Explain"
 keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
@@ -155,28 +155,8 @@ keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<
 keymap.set("n", "<leader>x", run_python, opts)
 keymap.set("v", "<leader>x", run_python_visual, opts)
 
-keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>")
-keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
-
-
-
---------------------------------------------------------------------------------
--- Lspsaga keymaps, obsolete
-
-
--- keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
--- keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
--- keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
--- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
--- keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
--- keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
--- keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
--- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
--- keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
--- keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
--- keymap.set("n", "<leader>h", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
--- keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
+keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>", opts)
+keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>", opts)
 
 --------------------------------------------------------------------------------
 -- old keymaps I might use again
@@ -189,15 +169,3 @@ keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>")
 -- keymap.set("n", "<leader>lf", ':lua require("nabla").disable_virt()<CR>', silent)
 -- keymap.set('i', 'jj', '<ESC>') -- normal mode without escape
 
-
---------------------------------------------------------------------------------
--- git diff
-
-
--- keymap.set("n", "gh", ":diffget //2<CR>")
--- keymap.set("n", "gl", ":diffget //3<CR>")
--- keymap.set("n", "<leader>dgo", "zo")
---
--- keymap.set("n", "gh", ":diffget LOCAL")
--- keymap.set("n", "gl", ":diffget BASE")
--- keymap.set("n", "gj", ":diffget REMOTE")
