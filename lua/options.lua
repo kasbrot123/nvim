@@ -33,10 +33,11 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.hlsearch = false
 opt.incsearch = true
 
+-- swap and undo files
 opt.swapfile = true
 opt.undofile = true
 
-
+-- when search highlight all matches until hit enter
 vim.cmd([[
     augroup vimrc-incsearch-highlight
     autocmd!
@@ -45,8 +46,6 @@ vim.cmd([[
     augroup END
 ]])
 
--- cursor line
--- opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
 
@@ -57,6 +56,7 @@ opt.background = "dark" -- colorschemes that can be light or dark will be made d
 -- opt.signcolumn = "auto:4" -- show sign column so that text doesn't shift
 -- auto for gitsigns and lsp signs, -> does not work always resizes
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+-- opt.cursorline = true -- highlight the current cursor line
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
@@ -68,36 +68,8 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
+-- -----------------------------------------------------------------------------
+-- Options not used
+
 -- opt.iskeyword:append("-") -- consider string-string as whole word
-
-opt.diffopt:append("vertical")
-
-
--- vim.api.nvim_create_autocmd("User", {
---   pattern = "TelescopePreviewerLoaded",
---   callback = function(args)
---     if args.data.filetype ~= "help" then
---       vim.wo.number = true
---     elseif args.data.bufname:match("*.png") then
---       vim.wo.wrap = false
---     end
---   end,
--- })
-
--- vim.api.nvim_create_autocmd({"FileType"}, { pattern="markdown", group=optional_group, command="TSDisable highlight"})
---
--- vim.api.nvim_create_autocmd({"FileType"}, { pattern={"*.md", "*.c"}, group=optional_group, command="TSDisable highlight"})
-
-
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---     pattern = {"*.c", "*.h"},
---     callback = function(ev)
---         print(string.format('event fired: %s', vim.inspect(ev)))
---     end
--- })
---
---
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.c", "*.h"},
---   command = "echo 'Entering a C or C++ file'",
--- })
+-- opt.diffopt:append("vertical")

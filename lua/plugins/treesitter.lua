@@ -13,7 +13,7 @@ treesitter.setup({
         enable = false, -- enable syntax highlighting
     },
 
-    indent = { 
+    indent = {
         enable = true, -- enable indentation
     },
 
