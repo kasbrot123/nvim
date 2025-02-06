@@ -8,10 +8,12 @@ minimalistic so it works on every machine.
 
 ## Software dependencies
 
+See below in subsections for installation instructions...
+
 - `python` and `pip3`
-- `npm` (for LSP servers and stuff)
-- `gcc` and `g++` (for Mason, Treesitter, and other plugins I guess)
-- `ripgrep` (for fuzzy finding in Telescope)
+- `npm` e.g. node.js, search online (for LSP servers and stuff)
+- `gcc` and `g++` , see below (for Mason, Treesitter, and other plugins I guess)
+- `ripgrep` e.g. via powershell or pip (for fuzzy finding in Telescope)
 
 
 ### Python and nodejs
@@ -23,7 +25,7 @@ On Windows use the installers. It is straight forward for both.
 
 1. Search for MinGW-w64 and go to their homepage.
 2. Go to downloads (https://www.mingw-w64.org/downloads/)
-3. Search for mingw-w64 and go to their github page. 
+3. Search for minGW-W64-builds and go to their github page. 
 4. Select something like this `**x86_64-13.2.0-release-win32-seh-msvcrt-rt_v11-rev1.7z**`
 5. Paste it into C:\ and set the global path variable.
 
