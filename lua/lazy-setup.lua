@@ -267,9 +267,9 @@ require("lazy").setup({
             local lspconfig_defaults = lspconfig.util.default_config
 
             mason.setup({
-                ensure_installed = {
-                    "pyright",
-                },
+                -- ensure_installed = {
+                --     "pyright",
+                -- },
                 -- auto-install configured servers (with lspconfig)
                 automatic_installation = false, -- not the same as ensure_installed
             })
