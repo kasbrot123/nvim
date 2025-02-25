@@ -87,8 +87,8 @@ require("lazy").setup({
         config = function()
             require("lualine").setup({
                 options = {
-                    theme = "nightfly",
-                    -- theme = "auto",
+                    -- theme = "nightfly",
+                    theme = "auto",
                     icons_enabled = false,
                     section_separators = { left = '', right = ''},
                     component_separators = { left = '|', right = '|'},
@@ -97,11 +97,13 @@ require("lazy").setup({
                     -- Default, when your window is active
                     -- lualine_a = {'mode'},
                     -- lualine_b = {'branch', 'diff', 'diagnostics'},
-                    -- lualine_c = {'filename'},
+                    -- lualine_c = {{'filename', path = 0}}, -- 0 = just filename, 1 = relative path, 2 = absolute path
+
                     -- lualine_x = {'encoding', 'fileformat', 'filetype'},
                     -- lualine_y = {'progress'},
                     -- lualine_z = {'location'}
 
+                    lualine_c = {{'filename', path = 1}},
                     lualine_b = {'branch', 'diagnostics'},
                     lualine_x = {'encoding', 'fileformat', 'filesize'},
                     lualine_z = {'location'}
