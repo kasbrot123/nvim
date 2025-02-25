@@ -9,7 +9,7 @@ local silent = { silent = true }
 -- basic mappings
 
 -- if you press leader it will move the cursor
-vim.keymap.set("n", "<Space>", "<Nop>", silent)
+keymap.set("n", "<Space>", "<Nop>", silent)
 
 -- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
@@ -98,19 +98,11 @@ local run_python = function()
     local full_command = cmd_reset .. "\n" .. cmd_cd .. "\n" .. cmd_run
 
     local toggleterm = require("toggleterm")
-
-    -- every line it self
-    -- toggleterm.exec(cmd_reset, 2)
-    -- toggleterm.exec(cmd_cd, 2)
-    -- toggleterm.exec(cmd_run, 2)
-
-    -- or compact without lines in interpreter
     toggleterm.exec(full_command, 2)
-
 
     -- solution found in the issues of toggleterm
     local IPYTHON_TERMINAL_WINDOW = 2
-    ipython_terminal = require("toggleterm.terminal").get(IPYTHON_TERMINAL_WINDOW)
+    local ipython_terminal = require("toggleterm.terminal").get(IPYTHON_TERMINAL_WINDOW)
     -- ipython_terminal:focus()
 
     local job_id = ipython_terminal.job_id
