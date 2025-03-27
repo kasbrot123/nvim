@@ -206,7 +206,7 @@ require("lazy").setup({
             configs.setup({
                 ensure_installed = { "lua", "vim", "vimdoc", "python"},
                 -- sync_install = false,
-                highlight = { enable = true },
+                highlight = { enable = false },
                 indent = { enable = false },
                 autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
                 auto_install = false,
@@ -267,6 +267,7 @@ require("lazy").setup({
             local lspkind = require("lspkind")
             local lspconfig = require("lspconfig")
             local lspconfig_defaults = lspconfig.util.default_config
+            require("luasnip/loaders/from_vscode").lazy_load()
 
             mason.setup({
                 -- ensure_installed = {
