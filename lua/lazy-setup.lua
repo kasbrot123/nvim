@@ -206,7 +206,7 @@ require("lazy").setup({
             configs.setup({
                 ensure_installed = { "lua", "vim", "vimdoc", "python"},
                 -- sync_install = false,
-                highlight = { enable = false },
+                highlight = { enable = true },
                 indent = { enable = false },
                 autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
                 auto_install = false,
