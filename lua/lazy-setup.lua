@@ -246,7 +246,7 @@ require("lazy").setup({
     {'glepnir/template.nvim', cmd = {'Template','TemProject'}, config = function()
         require('template').setup({
             -- config in there
-            temp_dir = '~/AppData/Local/nvim/templates',
+            temp_dir = vim.fn.stdpath("config")..'/templates',
             author = 'Michael T.',
             email = 'michael@email',
         })
