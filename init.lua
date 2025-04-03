@@ -9,7 +9,7 @@ require("lazy-setup")
 -- packer package manager
 
 -- require("plugins-setup")
---
+-- 
 -- -- the order matters, do not sort alphabetically
 -- require("plugins.treesitter")
 -- require("plugins.nvim-tree")
@@ -25,6 +25,6 @@ require("lazy-setup")
 -- require("plugins.telescope")
 -- require("plugins.toggleterm")
 -- require("plugins.translate")
---
+-- 
 -- -- require("plugins.lsp.null-ls")
 -- -- require("plugins.lsp.lspsaga")

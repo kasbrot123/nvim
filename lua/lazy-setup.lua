@@ -369,6 +369,7 @@ require("lazy").setup({
 
     -- commenting with gc
     -- {"numToStr/Comment.nvim"},
+    -- {"tpope/vim-commentary"},
 
     -- for undistracted writing
     -- {"junegunn/goyo.vim"},
