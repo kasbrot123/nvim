@@ -77,6 +77,34 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 -- keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts)
 
 
+local header_text = function()
+    local file_type = vim.o.filetype
+    vim.cmd(":Template " .. file_type)
+    vim.cmd(':lua print("Template for '..file_type..'")')
+end
+
+keymap.set("n", "<leader>h", header_text, opts)
+
+
+-- local execute_program = function()
+--     local toggleterm = require("toggleterm")
+--     local file_ext = vim.fn.expand("%:e")
+--
+--     if file_ext == 'py' then
+--         vim.cmd(":1ToggleTerm direction=float")
+--         toggleterm.exec("python "..vim.fn.expand("%:p:h"), 1)
+--     elseif file_ext == 'cpp' then
+--         vim.cmd(":1ToggleTerm direction=float")
+--         toggleterm.exec("g++ *.cpp && a.exe", 1)
+--         -- difference for linux and windows
+--     else
+--         vim.cmd(':lua print("Program not defined for: .'..file_ext..'")')
+--     end
+--
+-- end
+-- keymap.set("n", "<leader>x", execute_program, opts)
+
+
 --------------------------------------------------------------------------------
 -- terminal & python
 
