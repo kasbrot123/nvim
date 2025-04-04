@@ -252,6 +252,22 @@ require("lazy").setup({
         })
     end},
 
+
+    {"NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
+
+            -- Only one of these is needed.
+            "nvim-telescope/telescope.nvim", -- optional
+            -- "ibhagwan/fzf-lua",              -- optional
+            -- "echasnovski/mini.pick",         -- optional
+        },
+        config = true
+    },
+
+
+
     -- lazy load you can use cmd or ft. if you are using cmd to lazyload when you edit the template file
     -- you may see some diagnostics in template file. use ft to lazy load the diagnostic not display
     -- when you edit the template file.
@@ -267,6 +283,7 @@ require("lazy").setup({
             "hrsh7th/cmp-nvim-lsp", -- for autocompletion
             "hrsh7th/cmp-buffer", -- source for text in buffer
             "hrsh7th/cmp-path", -- source for file system paths
+            'hrsh7th/cmp-calc',
 
             "onsails/lspkind.nvim",
             "L3MON4D3/LuaSnip",
@@ -315,6 +332,7 @@ require("lazy").setup({
                     { name = "luasnip" }, -- snippets
                     { name = "buffer" }, -- text within current buffer
                     { name = "path" }, -- file system paths
+                    { name = "calc" }, -- math expressions
                 }),
                 mapping = cmp.mapping.preset.insert({
                     ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
