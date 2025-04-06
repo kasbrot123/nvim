@@ -155,7 +155,9 @@ require("lazy").setup({
     -- git integration
     {"lewis6991/gitsigns.nvim", -- show line modifications on left hand side
         config = function()
-            require("gitsigns").setup {}
+            require("gitsigns").setup {
+                sign_priority=100
+            }
         end,
     },
 

@@ -55,7 +55,7 @@ opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 -- opt.signcolumn = "auto:4" -- show sign column so that text doesn't shift
 -- auto for gitsigns and lsp signs, -> does not work always resizes
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.signcolumn = "yes:2" -- show sign column so that text doesn't shift
 -- opt.cursorline = true -- highlight the current cursor line
 
 -- backspace
@@ -67,6 +67,15 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
+
+
+-- LSP diagnostics
+vim.diagnostic.config({
+    severity_sort = true,
+    virtual_text = true,
+    current_line_virtual_text = true,
+})
+
 
 -- -----------------------------------------------------------------------------
 -- Options not used
