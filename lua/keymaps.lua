@@ -1,15 +1,15 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
-local opts = { noremap = true }
-local silent = { silent = true }
+local opts = { noremap = true, silent = false }
+local noremap = { noremap = true }
 
 
 --------------------------------------------------------------------------------
 -- basic mappings
 
 -- if you press leader it will move the cursor
-keymap.set("n", "<Space>", "<Nop>", silent)
+keymap.set("n", "<Space>", "<Nop>", opts)
 
 -- text movements
 keymap.set({"n", "v"}, "ß", "$", opts)
@@ -43,8 +43,8 @@ keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes
 keymap.set("n", "<leader>s", ":set invspell<CR>", opts)
 keymap.set("n", "<leader>ss", "1z=", opts)
 keymap.set("n", "<leader>sa", "z=", opts)
-keymap.set("n", "<leader>d", ":windo diffthis<CR>", opts)
-keymap.set("n", "<leader>dd", ":diffoff!<CR>", opts)
+keymap.set("n", "<leader>d", ":windo diffthis<CR>", noremap)
+keymap.set("n", "<leader>dd", ":diffoff!<CR>", noremap)
 
 -- visual mode keymaps
 keymap.set("v", "<leader>l", ":norm Hi", opts)
@@ -55,8 +55,8 @@ keymap.set("c", "ww", "w!", opts)
 keymap.set("c", "xx", "x!", opts)
 
 -- maps for autocompletion & ls
-keymap.set("n", "gr", vim.lsp.buf.rename, opts) -- smart renaming with lsp
-keymap.set("n", "gh", vim.lsp.buf.hover, opts) -- help from lsp, e for "Explain"
+keymap.set("n", "gr", vim.lsp.buf.rename, opts)
+keymap.set("n", "gh", vim.lsp.buf.hover, opts)
 keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
@@ -71,42 +71,16 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts)
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
--- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts)
--- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
--- keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", opts)
--- keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts)
 
+
+--------------------------------------------------------------------------------
+-- helper functions
 
 local header_text = function()
     local file_type = vim.o.filetype
     vim.cmd(":Template " .. file_type)
     vim.cmd(':lua print("Template for '..file_type..'")')
 end
-
-keymap.set("n", "<leader>h", header_text, opts)
-
-
--- local execute_program = function()
---     local toggleterm = require("toggleterm")
---     local file_ext = vim.fn.expand("%:e")
---
---     if file_ext == 'py' then
---         vim.cmd(":1ToggleTerm direction=float")
---         toggleterm.exec("python "..vim.fn.expand("%:p:h"), 1)
---     elseif file_ext == 'cpp' then
---         vim.cmd(":1ToggleTerm direction=float")
---         toggleterm.exec("g++ *.cpp && a.exe", 1)
---         -- difference for linux and windows
---     else
---         vim.cmd(':lua print("Program not defined for: .'..file_ext..'")')
---     end
---
--- end
--- keymap.set("n", "<leader>x", execute_program, opts)
-
-
---------------------------------------------------------------------------------
--- terminal & python
 
 local run_python = function()
     vim.cmd(':w')
@@ -134,6 +108,25 @@ local run_python = function()
     end, 150)
 end
 
+-- this function can be 
+local execute_program = function()
+    local toggleterm = require("toggleterm")
+    local file_ext = vim.fn.expand("%:e")
+
+    if file_ext == 'py' then
+        run_python()
+        -- terminal way
+        -- vim.cmd(":1ToggleTerm direction=float")
+        -- toggleterm.exec("python "..vim.fn.expand("%:p:h"), 1)
+    elseif file_ext == 'cpp' then
+        vim.cmd(":1ToggleTerm direction=float")
+        toggleterm.exec("g++ *.cpp && a.exe", 1)
+        -- difference for linux and windows
+    else
+        vim.cmd(':lua print("Program not defined for: .'..file_ext..'")')
+    end
+
+end
 
 local trim_spaces = false
 local run_python_visual = function()
@@ -152,22 +145,23 @@ local run_python_visual = function()
 end
 
 
+--------------------------------------------------------------------------------
+-- terminal things
+
+keymap.set("n", "<leader>h", header_text, opts)
+keymap.set("n", "<leader>x", execute_program, opts)
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
 keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
 keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
 keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
 keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
-keymap.set("t", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
-
-keymap.set("n", "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
+keymap.set({"n", "t"}, "<C-t>", "<cmd>1ToggleTerm direction=float<cr>", opts)
 keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical size=60<cr>', opts)
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
-keymap.set("n", "<leader>x", run_python, opts)
+keymap.set("n", "<leader>x", execute_program, opts)
 keymap.set("v", "<leader>x", run_python_visual, opts)
 
-keymap.set("n", "<leader>n", "iimport numpy as np\n<ESC>", opts)
-keymap.set("n", "<leader>m", "ifrom matplotlib import pyplot as plt\n<ESC>", opts)
 
 --------------------------------------------------------------------------------
 -- old keymaps I might use again
