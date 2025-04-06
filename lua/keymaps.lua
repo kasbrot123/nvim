@@ -112,12 +112,6 @@ local run_python = function()
     vim.cmd(':w')
     -- vim.cmd.write() -- another way
 
-    -- old solution
-    -- vim.cmd('2TermExec cmd="\\%reset -f "') -- delete workspace
-    -- vim.cmd('2TermExec cmd="\\%cd ' .. vim.fn.expand("%:p:h") .. '"') -- local workspace
-    -- vim.cmd('2TermExec cmd="\\%cd %:p:h "') -- local workspace
-    -- vim.cmd('2TermExec cmd="\\%run ' .. vim.fn.expand("%:p") .. '"') --vim.fn.expand("%"))
-
     local cmd_reset = "%reset -f"
     local folder_path = vim.fn.expand("%:p:h"):gsub("\\", "\\\\")
     local cmd_cd = "%cd -q \"" .. folder_path .. "\""
@@ -143,9 +137,6 @@ end
 
 local trim_spaces = false
 local run_python_visual = function()
--- vim.keymap.set("v", "<leader>b", function()
-    -- require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
-    -- require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
     require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
 
     -- solution found in the issues of toggleterm
