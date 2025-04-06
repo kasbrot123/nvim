@@ -29,7 +29,8 @@ require("lazy").setup({
       {"nvim-lua/plenary.nvim", lazy = true},
 
       -- Colorschemes
-      {'bluz71/vim-nightfly-colors',
+      {
+          'bluz71/vim-nightfly-colors',
           priority = 1000, -- make sure to load this before all the other start plugins
           config = function()
               -- load the colorscheme here
@@ -37,15 +38,13 @@ require("lazy").setup({
           end,
       },
 
-    -- vs-code like icons
-    {"nvim-tree/nvim-web-devicons"},
-
     -- file explorer
     {
         "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
         dependencies = {
+            -- vs-code like icons
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
@@ -80,7 +79,8 @@ require("lazy").setup({
     },
 
     -- statusline
-    {"nvim-lualine/lualine.nvim",
+    {
+        "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
@@ -124,7 +124,8 @@ require("lazy").setup({
     },
 
     -- fuzzy finding w/ telescope
-    { "nvim-telescope/telescope.nvim",
+    {
+        "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
@@ -171,7 +172,8 @@ require("lazy").setup({
     {'akinsho/toggleterm.nvim', version = "*", config = true},
 
     -- harpoon
-    {"ThePrimeagen/harpoon",
+    {
+        "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
@@ -182,25 +184,18 @@ require("lazy").setup({
 
             -- <leader>a to apend files
             vim.keymap.set("n", "<leader>a", function() harpoon:list():add(); print('Hook added') end)
-
             -- menue next to my "file tree button" <leader>e
             vim.keymap.set("n", "<leader>r", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-            -- rest I dont need
-
             vim.keymap.set("n", "<space>1", function() harpoon:list():select(1) end)
             vim.keymap.set("n", "<space>2", function() harpoon:list():select(2) end)
             vim.keymap.set("n", "<space>3", function() harpoon:list():select(3) end)
             vim.keymap.set("n", "<space>4", function() harpoon:list():select(4) end)
-
-            -- Toggle previous & next buffers stored within Harpoon list
-            -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-            -- vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
         end,
     },
 
     -- treesitter configuration
-    {"nvim-treesitter/nvim-treesitter",
+    {
+        "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function () 
             local configs = require("nvim-treesitter.configs")
@@ -238,44 +233,36 @@ require("lazy").setup({
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             -- make autopairs and completion work together
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
         end,
-        -- use opts = {} for passing setup options
-        -- this is equivalent to setup({}) function
     },
-    -- with lazy.nvim
 
-    {'glepnir/template.nvim', cmd = {'Template','TemProject'}, config = function()
-        require('template').setup({
-            -- config in there
-            temp_dir = vim.fn.stdpath("config")..'/templates',
-            author = 'Michael T.',
-            email = 'michael@email',
-        })
-    end},
+    {
+        'glepnir/template.nvim', 
+        cmd = {'Template','TemProject'}, 
+        config = function()
+            require('template').setup({
+                -- config in there
+                temp_dir = vim.fn.stdpath("config")..'/templates',
+                author = 'Michael T.',
+                email = 'michael@email',
+            })
+        end
+    },
 
-
-    {"NeogitOrg/neogit",
+    {
+        "NeogitOrg/neogit",
         dependencies = {
             "nvim-lua/plenary.nvim",         -- required
             "sindrets/diffview.nvim",        -- optional - Diff integration
-
-            -- Only one of these is needed.
             "nvim-telescope/telescope.nvim", -- optional
-            -- "ibhagwan/fzf-lua",              -- optional
-            -- "echasnovski/mini.pick",         -- optional
         },
         config = true
     },
 
 
-
-    -- lazy load you can use cmd or ft. if you are using cmd to lazyload when you edit the template file
-    -- you may see some diagnostics in template file. use ft to lazy load the diagnostic not display
-    -- when you edit the template file.
-
     -- new LSP config
-    {'neovim/nvim-lspconfig',
+    {
+        'neovim/nvim-lspconfig',
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
@@ -285,7 +272,7 @@ require("lazy").setup({
             "hrsh7th/cmp-nvim-lsp", -- for autocompletion
             "hrsh7th/cmp-buffer", -- source for text in buffer
             "hrsh7th/cmp-path", -- source for file system paths
-            'hrsh7th/cmp-calc',
+            'hrsh7th/cmp-calc', -- calculate math expressions
 
             "onsails/lspkind.nvim",
             "L3MON4D3/LuaSnip",
@@ -344,24 +331,6 @@ require("lazy").setup({
                     ["<CR>"] = cmp.mapping.confirm({ select = false }),
                     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
                     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-                    -- ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-                    -- ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-                    -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-                    -- ["<Tab>"] = cmp.mapping(function(fallback)
-                    --     -- if cmp.visible() then
-                    --     --     cmp.select_next_item()
-                    --         -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
-                        --         -- that way you will only jump inside the snippet region
-                    --     if luasnip.expand_or_jumpable() then
-                    --         luasnip.expand_or_jump()
-                    --     elseif has_words_before() then
-                    --         cmp.complete()
-                    --     else
-                    --         fallback()
-                    --     end
-                    -- end, { "i", "s" }),
                 }),
             })
 
@@ -410,6 +379,7 @@ require("lazy").setup({
     -- {"windwp/nvim-ts-autotag", after = "nvim-treesitter" }, -- autoclose tags, html
 
   },
+
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
