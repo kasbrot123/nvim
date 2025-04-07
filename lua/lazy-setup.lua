@@ -131,7 +131,7 @@ require("lazy").setup({
             "nvim-tree/nvim-web-devicons",
         },
         -- configure custom mappings
-        config = function() 
+        config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
             telescope.setup({
@@ -146,7 +146,6 @@ require("lazy").setup({
                     },
                 },
             })
-
         end,
     },
 
@@ -197,7 +196,7 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function () 
+        config = function ()
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
@@ -219,7 +218,7 @@ require("lazy").setup({
             -- after nvim-treesitter
             "windwp/nvim-ts-autotag"
         },
-        config = function() 
+        config = function()
             local autopairs = require("nvim-autopairs")
             autopairs.setup({
                 check_ts = true, -- enable treesitter
@@ -237,7 +236,7 @@ require("lazy").setup({
     },
 
     {
-        'glepnir/template.nvim', 
+        'glepnir/template.nvim',
         cmd = {'Template','TemProject'}, 
         config = function()
             require('template').setup({
@@ -258,7 +257,6 @@ require("lazy").setup({
         },
         config = true
     },
-
 
     -- new LSP config
     {
@@ -289,10 +287,12 @@ require("lazy").setup({
             require("luasnip/loaders/from_vscode").lazy_load()
 
             mason.setup({
-                -- ensure_installed = {
-                --     "pyright",
-                -- },
-                -- auto-install configured servers (with lspconfig)
+                ensure_installed = {
+                    "pyright",
+                    "lua_ls",
+                    "lemminx",
+                    "clangd",
+                },
                 automatic_installation = false, -- not the same as ensure_installed
             })
             lspconfig_defaults.capabilities = vim.tbl_deep_extend(
@@ -335,19 +335,37 @@ require("lazy").setup({
             })
 
             -- lsp servers
-            masonlsp.setup_handlers {
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function (server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {}
-                end,
-                -- Next, you can provide a dedicated handler for specific servers.
-                -- For example, a handler override for the `rust_analyzer`:
-                -- ["rust_analyzer"] = function ()
-                    --     require("rust-tools").setup {}
-                    -- end
-            }
+            masonlsp.setup({
+                handlers = {
+                    -- The first entry (without a key) will be the default handler
+                    -- and will be called for each installed server that doesn't have
+                    -- a dedicated handler.
+                    -- Next, you can provide a dedicated handler for specific servers.
+                    -- For example, a handler override for the `rust_analyzer`:
+                    -- ["rust_analyzer"] = function ()
+                        --     require("rust-tools").setup {}
+                        -- end
+                    function (server_name) -- default handler (optional)
+                        require("lspconfig")[server_name].setup {}
+                    end,
+                },
+
+            })
+
+            -- LSP diagnostics
+            vim.diagnostic.config({
+                severity_sort = true,
+                virtual_text = true,
+                current_line_virtual_text = true,
+                float = {
+                    focusable = false,
+                    style = "minimal",
+                    border = "rounded",
+                    source = "always",
+                    header = "",
+                    prefix = "",
+                },
+            })
         end,
     },
 

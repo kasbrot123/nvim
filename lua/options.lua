@@ -69,14 +69,6 @@ opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
 
--- LSP diagnostics
-vim.diagnostic.config({
-    severity_sort = true,
-    virtual_text = true,
-    current_line_virtual_text = true,
-})
-
-
 -- -----------------------------------------------------------------------------
 -- Options not used
 

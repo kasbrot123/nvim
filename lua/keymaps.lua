@@ -54,13 +54,16 @@ keymap.set("c", "qq", "q!", opts)
 keymap.set("c", "ww", "w!", opts)
 keymap.set("c", "xx", "x!", opts)
 
--- maps for autocompletion & ls
+-- Autocompletion and LSP
 keymap.set("n", "gr", vim.lsp.buf.rename, opts)
 keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+-- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+keymap.set("n", "<leader>vD", vim.diagnostic.open_float, opts)
 keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
-keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
 keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+
 
 -- telescope plugin
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
@@ -134,10 +137,10 @@ local run_python_visual = function()
 
     -- solution found in the issues of toggleterm
     local IPYTHON_TERMINAL_WINDOW = 2
-    ipython_terminal = require("toggleterm.terminal").get(IPYTHON_TERMINAL_WINDOW)
+    local Ipython_terminal = require("toggleterm.terminal").get(IPYTHON_TERMINAL_WINDOW)
     -- ipython_terminal:focus()
 
-    local job_id = ipython_terminal.job_id
+    local job_id = Ipython_terminal.job_id
     local enter_in_string = string.char(13)
     vim.defer_fn(function()
         vim.fn.chansend(job_id, enter_in_string)
