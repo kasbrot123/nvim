@@ -287,12 +287,6 @@ require("lazy").setup({
             require("luasnip/loaders/from_vscode").lazy_load()
 
             mason.setup({
-                ensure_installed = {
-                    "pyright",
-                    "lua_ls",
-                    "lemminx",
-                    "clangd",
-                },
                 automatic_installation = false, -- not the same as ensure_installed
             })
             lspconfig_defaults.capabilities = vim.tbl_deep_extend(
@@ -336,6 +330,12 @@ require("lazy").setup({
 
             -- lsp servers
             masonlsp.setup({
+                ensure_installed = {
+                    "pyright",
+                    "lua_ls",
+                    "lemminx",
+                    "clangd",
+                },
                 handlers = {
                     -- The first entry (without a key) will be the default handler
                     -- and will be called for each installed server that doesn't have
