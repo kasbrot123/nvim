@@ -133,7 +133,9 @@ end
 
 local trim_spaces = false
 local run_python_visual = function()
-    require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+    -- don't know why 'vim.v.count' but the plugin takes this as id
+    -- require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+    require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = 2 })
 
     -- solution found in the issues of toggleterm
     local IPYTHON_TERMINAL_WINDOW = 2
