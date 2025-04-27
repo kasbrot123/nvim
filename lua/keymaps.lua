@@ -29,12 +29,20 @@ keymap.set('n', '<leader>+', '<cmd>horizontal resize +2<cr>', opts)
 keymap.set('n', '<leader>-', '<cmd>horizontal resize -2<cr>', opts)
 keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
 
+-- Resize with arrows
+keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
 -- normal mode keymaps
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toggle file explorer
 keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
 keymap.set("n", "a", "A", opts)
 keymap.set("n", ">", ">>", opts)
 keymap.set("n", "<", "<<", opts)
+keymap.set("v", "<", "<gv^", opts)
+keymap.set("v", ">", ">gv^", opts) -- Visual, Stay in indent mode
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts) -- windows terminal
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>", opts)
