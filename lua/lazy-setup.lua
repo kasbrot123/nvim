@@ -30,8 +30,10 @@ require("lazy").setup({
 
       -- Colorschemes
       {
-          -- 'bluz71/vim-nightfly-colors',
-          'rebelot/kanagawa.nvim',
+          'bluz71/vim-nightfly-colors',
+          dependencies = {
+              'rebelot/kanagawa.nvim'
+          },
           priority = 1000, -- make sure to load this before all the other start plugins
           config = function()
               -- load the colorscheme here
