@@ -30,11 +30,13 @@ require("lazy").setup({
 
       -- Colorschemes
       {
-          'bluz71/vim-nightfly-colors',
+          -- 'bluz71/vim-nightfly-colors',
+          'rebelot/kanagawa.nvim',
           priority = 1000, -- make sure to load this before all the other start plugins
           config = function()
               -- load the colorscheme here
-              vim.cmd([[colorscheme nightfly]])
+              -- vim.cmd([[colorscheme nightfly]])
+              vim.cmd([[colorscheme kanagawa]])
           end,
       },
 
@@ -77,7 +79,109 @@ require("lazy").setup({
             })
         end,
     },
-
+    {
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- or if using mini.icons/mini.nvim
+        dependencies = { "echasnovski/mini.icons" },
+        enabled = false,
+        opts = {},
+        keys={
+            {
+                "<leader>ff",
+                function() require('fzf-lua').files() end,
+                desc="Find Files in project directory"
+            },
+            {
+                "<leader>fg",
+                function() require('fzf-lua').live_grep() end,
+                desc="Find by grepping in project directory"
+            },
+            {
+                "<leader>fc",
+                function() require('fzf-lua').files({cwd=vim.fn.stdpath("config")}) end,
+                desc="Find in neovim configuration"
+            },
+            {
+                "<leader>fh",
+                function()
+                    require("fzf-lua").helptags()
+                end,
+                desc = "[F]ind [H]elp",
+            },
+            {
+                "<leader>fk",
+                function()
+                    require("fzf-lua").keymaps()
+                end,
+                desc = "[F]ind [K]eymaps",
+            },
+            {
+                "<leader>fb",
+                function()
+                    require("fzf-lua").builtin()
+                end,
+                desc = "[F]ind [B]uiltin FZF",
+            },
+            {
+                "<leader>fw",
+                function()
+                    require("fzf-lua").grep_cword()
+                end,
+                desc = "[F]ind current [W]ord",
+            },
+            {
+                "<leader>fW",
+                function()
+                    require("fzf-lua").grep_cWORD()
+                end,
+                desc = "[F]ind current [W]ORD",
+            },
+            {
+                "<leader>fd",
+                function()
+                    require("fzf-lua").diagnostics_document()
+                end,
+                desc = "[F]ind [D]iagnostics",
+            },
+            {
+                "<leader>fw",
+                function()
+                    require("fzf-lua").diagnostics_workspace()
+                end,
+                desc = "[F]ind [D]iagnostics",
+            },
+            {
+                "<leader>fr",
+                function()
+                    require("fzf-lua").resume()
+                end,
+                desc = "[F]ind [R]esume",
+            },
+            {
+                "<leader>fo",
+                function()
+                    require("fzf-lua").oldfiles()
+                end,
+                desc = "[F]ind [O]ld Files",
+            },
+            {
+                "<leader><leader>",
+                function()
+                    require("fzf-lua").buffers()
+                end,
+                desc = "[,] Find existing buffers",
+            },
+            {
+                "<leader>/",
+                function()
+                    require("fzf-lua").lgrep_curbuf()
+                end,
+                desc = "[/] Live grep the current buffer",
+            },
+        }
+    },
     -- statusline
     {
         "nvim-lualine/lualine.nvim",
@@ -138,12 +242,15 @@ require("lazy").setup({
                 defaults = {
                     mappings = {
                         i = {
-                            ["<C-k>"] = actions.move_selection_previous, -- move to prev result
                             ["<C-j>"] = actions.move_selection_next, -- move to next result
+                            ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+                            ["<Down>"] = actions.preview_scrolling_down, -- move to next result
+                            ["<Up>"] = actions.preview_scrolling_up, -- move to prev result
                             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
                             ["<C-d>"] = actions.delete_buffer, -- deletes buffer in list
                         },
                     },
+                    layout_strategy = 'vertical',
                 },
             })
         end,
@@ -237,7 +344,7 @@ require("lazy").setup({
 
     {
         'glepnir/template.nvim',
-        cmd = {'Template','TemProject'}, 
+        cmd = {'Template','TemProject'},
         config = function()
             require('template').setup({
                 -- config in there
@@ -289,6 +396,11 @@ require("lazy").setup({
             mason.setup({
                 automatic_installation = false, -- not the same as ensure_installed
             })
+
+            -- this part is necessary to tell every lsp server what the client
+            -- can do. you can specify by server or just overwrite the default capabilities
+            -- 'lspconfig_defaults' are the default capabilities by the nvim lsp client
+            -- and the other capabilities come from the cmp plugin
             lspconfig_defaults.capabilities = vim.tbl_deep_extend(
                 'force',
                 lspconfig_defaults.capabilities,
@@ -346,8 +458,26 @@ require("lazy").setup({
                         --     require("rust-tools").setup {}
                         -- end
                     function (server_name) -- default handler (optional)
-                        require("lspconfig")[server_name].setup {}
+                        -- require("lspconfig")[server_name].setup {} -- old way
+                        -- {} is the settings list for each server
+                        -- e.g. you can set the capabilities there by
+                        -- {capabilities = ...}
+                        lspconfig[server_name].setup({})
                     end,
+
+                    -- because vim variable in lua gives warnings
+                    ["lua_ls"] = function()
+                        lspconfig.lua_ls.setup {
+                            settings = {
+                                Lua = {
+                                    diagnostics = {
+                                        globals = { "vim" },
+                                    }
+                                }
+                            }
+                        }
+                    end,
+
                 },
 
             })
@@ -361,11 +491,13 @@ require("lazy").setup({
                     focusable = false,
                     style = "minimal",
                     border = "rounded",
-                    source = "always",
+                    -- source = "always",
+                    source = "if_many",
                     header = "",
                     prefix = "",
                 },
             })
+
         end,
     },
 
