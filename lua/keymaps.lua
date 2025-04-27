@@ -29,12 +29,20 @@ keymap.set('n', '<leader>+', '<cmd>horizontal resize +2<cr>', opts)
 keymap.set('n', '<leader>-', '<cmd>horizontal resize -2<cr>', opts)
 keymap.set('n', '<leader>0', '<cmd>wincmd =<cr>', opts)
 
+-- Resize with arrows
+keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
 -- normal mode keymaps
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toggle file explorer
 keymap.set("n", "x", '"_x', opts) -- deletes char without writing to register
 keymap.set("n", "a", "A", opts)
 keymap.set("n", ">", ">>", opts)
 keymap.set("n", "<", "<<", opts)
+keymap.set("v", "<", "<gv^", opts)
+keymap.set("v", ">", ">gv^", opts) -- Visual, Stay in indent mode
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts) -- windows terminal
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>", opts)
@@ -59,18 +67,20 @@ keymap.set("n", "gr", vim.lsp.buf.rename, opts)
 keymap.set("n", "gh", vim.lsp.buf.hover, opts)
 keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-keymap.set("n", "<leader>vD", vim.diagnostic.open_float, opts)
 keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
-keymap.set("n", "gD", "<cmd>Telescope diagnostics<CR>", opts)
-keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+keymap.set("n", "gD", vim.diagnostic.open_float, opts)
+keymap.set("n", "gnD", function() vim.diagnostic.jump({count = 1}) end, opts)
+keymap.set("n", "gpD", function() vim.diagnostic.jump({count = -1}) end, opts)
 
+keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 -- telescope plugin
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
 keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap.set("n", "<leader>fs", "<cmd>Telescope spell_suggest<cr>", opts)
 keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+keymap.set("n", "<leader>fB", "<cmd>Telescope buffers<cr>", opts)
+keymap.set("n", "<leader>fb", "<cmd>Telescope builtin<cr>", opts)
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts)
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
@@ -133,7 +143,9 @@ end
 
 local trim_spaces = false
 local run_python_visual = function()
-    require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+    -- don't know why 'vim.v.count' but the plugin takes this as id
+    -- require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+    require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = 2 })
 
     -- solution found in the issues of toggleterm
     local IPYTHON_TERMINAL_WINDOW = 2
