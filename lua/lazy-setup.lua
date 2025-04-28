@@ -38,7 +38,7 @@ require("lazy").setup({
           config = function()
               -- load the colorscheme here
               -- vim.cmd([[colorscheme nightfly]])
-              vim.cmd([[colorscheme kanagawa]])
+              vim.cmd([[colorscheme nightfly]])
           end,
       },
 
