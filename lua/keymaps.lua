@@ -53,6 +53,7 @@ keymap.set("n", "<leader>ss", "1z=", opts)
 keymap.set("n", "<leader>sa", "z=", opts)
 keymap.set("n", "<leader>d", ":windo diffthis<CR>", noremap)
 keymap.set("n", "<leader>dd", ":diffoff!<CR>", noremap)
+keymap.set("n", "<leader>b", ":.!", noremap)
 
 -- visual mode keymaps
 keymap.set("v", "<leader>l", ":norm Hi", opts)
@@ -82,7 +83,8 @@ keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
 keymap.set("n", "<leader>fB", "<cmd>Telescope buffers<cr>", opts)
 keymap.set("n", "<leader>fb", "<cmd>Telescope builtin<cr>", opts)
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
-keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<cr>", opts)
+keymap.set("n", "<leader>fC", "<cmd>Telescope git_commits<cr>", opts)
+keymap.set("n", "<leader>fc", "<cmd>Telescope find_files hidden=true cwd="..vim.fn.stdpath("config").."<cr>", opts)
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 
 
