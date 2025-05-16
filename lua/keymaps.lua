@@ -135,8 +135,11 @@ local execute_program = function()
         -- toggleterm.exec("python "..vim.fn.expand("%:p:h"), 1)
     elseif file_ext == 'cpp' then
         vim.cmd(":1ToggleTerm direction=float")
-        toggleterm.exec("g++ *.cpp && a.exe", 1)
+        toggleterm.exec("g++ *.cpp -o main.exe", 1)
         -- difference for linux and windows
+    elseif file_ext == 'rs' then
+        vim.cmd(":ToggleTerm direction=float")
+        toggleterm.exec("rustc *.rs -o main", 1)
     else
         vim.cmd(':lua print("Program not defined for: .'..file_ext..'")')
     end
