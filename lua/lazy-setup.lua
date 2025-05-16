@@ -32,13 +32,15 @@ require("lazy").setup({
       {
           'bluz71/vim-nightfly-colors',
           dependencies = {
-              'rebelot/kanagawa.nvim'
+              'rebelot/kanagawa.nvim',
+              'catppuccin/nvim'
           },
           priority = 1000, -- make sure to load this before all the other start plugins
           config = function()
               -- load the colorscheme here
               vim.cmd([[colorscheme nightfly]])
               -- vim.cmd([[colorscheme kanagawa]])
+              -- vim.cmd([[colorscheme catppuccin]])
           end,
       },
 
@@ -51,7 +53,21 @@ require("lazy").setup({
             -- vs-code like icons
             "nvim-tree/nvim-web-devicons",
         },
+
         config = function()
+            -- i want to delete the default <C-t> in nvim-tree because it 
+            -- overwrites the toggle term keymap
+            local function my_on_attach(bufnr)
+              local api = require("nvim-tree.api")
+              local function opts(desc)
+                return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+              end
+              api.config.mappings.default_on_attach(bufnr)
+
+              -- remove a default
+              vim.keymap.del("n", "<C-t>", { buffer = bufnr })
+            end
+
             require("nvim-tree").setup({
                 -- change folder arrow icons, if nerd font is not present
                 renderer = {
@@ -78,6 +94,7 @@ require("lazy").setup({
                 git = {
                     ignore = false,
                 },
+                on_attach = my_on_attach,
             })
         end,
     },
