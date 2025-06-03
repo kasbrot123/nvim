@@ -1,7 +1,7 @@
 local opt = vim.opt -- for conciseness
 
 
-opt.relativenumber = false -- show relative line numbers
+opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -56,7 +56,7 @@ vim.cmd([[
     augroup END
 ]])
 
-vim.api.nvim_create_autocmd({"BufNewFile"}, { command = '0r '..vim.fn.stdpath("config")..'/templates2/skeleton.'..vim.fn.expand("%:e")})
+-- vim.api.nvim_create_autocmd({"BufNewFile"}, { command = '0r '..vim.fn.stdpath("config")..'/templates2/skeleton.'..vim.fn.expand("%:e")})
 
 
 -- -----------------------------------------------------------------------------

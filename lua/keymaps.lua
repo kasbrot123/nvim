@@ -169,6 +169,7 @@ end
 -- terminal things
 
 keymap.set("n", "<leader>h", header_text, opts)
+keymap.set("n", "<leader>t", header_text, opts)
 keymap.set("n", "<leader>x", execute_program, opts)
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
