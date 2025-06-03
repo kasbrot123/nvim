@@ -1,19 +1,32 @@
 local opt = vim.opt -- for conciseness
 
 
--- line numbers
-opt.relativenumber = true -- show relative line numbers
+opt.relativenumber = false -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
-
--- tabs & indentation
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
+opt.scrolloff = 4 -- scrolloff prevents cursor to hit the bottom/top, right side
+opt.sidescrolloff = 4 -- same with side when wrap is off
+opt.colorcolumn = "80" -- max text/code width indication
+opt.signcolumn = "yes:2" -- show sign column so that text doesn't shift
+opt.termguicolors = true -- turn on termguicolors for nightfly colorscheme to work
 
 -- line wrapping
-opt.wrap = true
-opt.lbr = true
+opt.wrap = true -- line wrap to see everything in the line
+opt.lbr = true -- breaks at space not at a word
+
+-- split windows
+opt.splitright = true -- split vertical window to the right
+opt.splitbelow = true -- split horizontal window to the bottom
+
+-- swap and undo files
+opt.swapfile = true
+opt.undofile = true
+
+-- clipboard
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- for chars that are normally not visible
 opt.list = true
@@ -22,11 +35,10 @@ opt.listchars = {
     trail = "."
 }
 
-
--- scrolloff prevents cursor to hit the bottom/top, right side
-opt.scrolloff = 4
-opt.sidescrolloff = 4
-opt.colorcolumn = "80"
+-- backspace
+opt.backspace = "indent,eol,start"
+-- allow backspace on indent, end of line or insert mode start position
+-- update: i have no idea what this actually does, better leave it here
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
@@ -34,9 +46,6 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.hlsearch = true -- show all results
 opt.incsearch = true -- already highlights while searching
 
--- swap and undo files
-opt.swapfile = true
-opt.undofile = true
 
 -- when search highlight all matches until hit enter
 vim.cmd([[
@@ -47,27 +56,7 @@ vim.cmd([[
     augroup END
 ]])
 
-
--- appearance
-
--- turn on termguicolors for nightfly colorscheme to work
--- (have to use iterm2 or any other true color terminal)
-opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
--- opt.signcolumn = "auto:4" -- show sign column so that text doesn't shift
--- auto for gitsigns and lsp signs, -> does not work always resizes
-opt.signcolumn = "yes:2" -- show sign column so that text doesn't shift
--- opt.cursorline = true -- highlight the current cursor line
-
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
-
--- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-
--- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+vim.api.nvim_create_autocmd({"BufNewFile"}, { command = '0r '..vim.fn.stdpath("config")..'/templates2/skeleton.'..vim.fn.expand("%:e")})
 
 
 -- -----------------------------------------------------------------------------
@@ -75,3 +64,4 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- opt.iskeyword:append("-") -- consider string-string as whole word
 -- opt.diffopt:append("vertical")
+-- opt.cursorline = true -- highlight the current cursor line
