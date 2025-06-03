@@ -422,6 +422,10 @@ require("lazy").setup({
             local lspconfig_defaults = lspconfig.util.default_config
             require("luasnip/loaders/from_vscode").lazy_load()
 
+            -- jump to next item in snippet
+            -- it overwrites tab, so not usable
+            -- vim.keymap.set({"i", "s"}, "<Tab>", function() luasnip.jump( 1) end, {silent = true})
+
             mason.setup({
                 automatic_installation = false, -- not the same as ensure_installed
             })
@@ -464,7 +468,7 @@ require("lazy").setup({
                     ["<C-k>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-j>"] = cmp.mapping.scroll_docs(4),
                     ["<CR>"] = cmp.mapping.confirm({ select = false }),
-                    ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+                    ["<C-Space>"] = cmp.mapping.complete(), -- show completion window
                     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
                 }),
             })
