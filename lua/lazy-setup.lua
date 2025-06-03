@@ -346,6 +346,10 @@ require("lazy").setup({
         end,
     },
 
+    {
+        "dhruvasagar/vim-table-mode"
+    },
+
     -- auto closing
     {
         'windwp/nvim-autopairs',
