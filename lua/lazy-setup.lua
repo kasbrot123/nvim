@@ -64,8 +64,14 @@ require("lazy").setup({
               end
               api.config.mappings.default_on_attach(bufnr)
 
+              -- custom mappings
+              -- vim.keymap.set('n', 'r', api.fs.rename, opts("Rename (self)"))
+              vim.keymap.del("n", "r", { buffer = bufnr })
+              vim.keymap.set('n', 'r', api.fs.rename, opts("Rename (self)"))
+
               -- remove a default
               vim.keymap.del("n", "<C-t>", { buffer = bufnr })
+
             end
 
             require("nvim-tree").setup({
