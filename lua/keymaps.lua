@@ -57,6 +57,7 @@ keymap.set("n", "<leader>b", ":.!", noremap)
 
 -- visual mode keymaps
 keymap.set("v", "<leader>l", ":norm Hi", opts)
+keymap.set("v", "<leader>ll", ":norm Hi- <CR>", opts)
 
 -- command mode, force quit, save with double hit
 keymap.set("c", "qq", "q!", opts)
