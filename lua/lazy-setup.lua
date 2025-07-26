@@ -267,10 +267,10 @@ require("lazy").setup({
                 defaults = {
                     mappings = {
                         i = {
-                            ["<C-j>"] = actions.move_selection_next, -- move to next result
-                            ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-                            ["<Down>"] = actions.preview_scrolling_down, -- move to next result
-                            ["<Up>"] = actions.preview_scrolling_up, -- move to prev result
+                            ["<Tab>"] = actions.move_selection_next, -- move to next result
+                            ["<S-Tab>"] = actions.move_selection_previous, -- move to prev result
+                            ["<C-j>"] = actions.preview_scrolling_down, -- move to next result
+                            ["<C-k>"] = actions.preview_scrolling_up, -- move to prev result
                             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
                             ["<C-d>"] = actions.delete_buffer, -- deletes buffer in list
                         },
