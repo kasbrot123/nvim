@@ -267,8 +267,8 @@ require("lazy").setup({
                 defaults = {
                     mappings = {
                         i = {
-                            ["<Tab>"] = actions.move_selection_next, -- move to next result
-                            ["<S-Tab>"] = actions.move_selection_previous, -- move to prev result
+                            ["<S-Tab>"] = actions.move_selection_next, -- move to next result
+                            ["<Tab>"] = actions.move_selection_previous, -- move to prev result
                             ["<C-j>"] = actions.preview_scrolling_down, -- move to next result
                             ["<C-k>"] = actions.preview_scrolling_up, -- move to prev result
                             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
