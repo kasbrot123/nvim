@@ -27,7 +27,7 @@ On Windows use the installers. It is straight forward for both.
 2. Go to downloads (https://www.mingw-w64.org/downloads/)
 3. Search for minGW-W64-builds and go to their github page. 
 4. Select something like this `**x86_64-13.2.0-release-win32-seh-msvcrt-rt_v11-rev1.7z**`
-5. Paste it into C:\ and set the global path variable.
+5. Paste `mingw32` into C:\ and set the global path variable for the `bin` folder.
 
 
 *Note: I experienced errors when using the MinGW 32-bit version (or the
