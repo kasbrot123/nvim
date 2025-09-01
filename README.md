@@ -5,6 +5,12 @@ to stick with the default key settings as much as possible and I like it
 minimalistic so it works on every machine. 
 
 
+## Would be good..
+
+- reload config keymap
+- debugger for python
+
+
 
 ## Software dependencies
 
