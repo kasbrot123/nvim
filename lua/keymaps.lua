@@ -184,6 +184,8 @@ keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical s
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<leader>x", execute_program, opts)
 keymap.set("v", "<leader>x", run_python_visual, opts)
+keymap.set("n", "<F5>", execute_program, opts)
+keymap.set("n", "<leader><leader>", execute_program, opts)
 
 
 --------------------------------------------------------------------------------

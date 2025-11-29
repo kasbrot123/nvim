@@ -33,14 +33,18 @@ require("lazy").setup({
           'bluz71/vim-nightfly-colors',
           dependencies = {
               'rebelot/kanagawa.nvim',
-              'catppuccin/nvim'
+              'catppuccin/nvim',
+              'rose-pine/neovim',
+              'ribru17/bamboo.nvim'
           },
           priority = 1000, -- make sure to load this before all the other start plugins
           config = function()
               -- load the colorscheme here
-              vim.cmd([[colorscheme nightfly]])
+              -- vim.cmd([[colorscheme nightfly]])
               -- vim.cmd([[colorscheme kanagawa]])
               -- vim.cmd([[colorscheme catppuccin]])
+              -- vim.cmd([[colorscheme rose-pine]])
+              vim.cmd([[colorscheme bamboo]])
           end,
       },
 
@@ -546,6 +550,15 @@ require("lazy").setup({
 
         end,
     },
+
+    -- not working with ssh and not maintained
+    -- {
+    --     'skardyy/neo-img',
+    --     build = ":NeoImg Install",
+    --     config = function()
+    --         require('neo-img').setup()
+    --     end
+    -- },
 
 
     -- -------------------------------------------------------------------------
