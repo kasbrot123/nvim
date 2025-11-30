@@ -92,10 +92,33 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 --------------------------------------------------------------------------------
 -- helper functions
 
+
+
+
 local header_text = function()
+    local win_id = 0 -- Aktuelles Fenster
+
+    -- coords ist eine Lua-Tabelle {Zeile, Spalte} (0-basiert)
+    local coords = vim.api.nvim_win_get_cursor(win_id)
+    local saved_line = coords[1]
+    local saved_col = coords[2]
+
+    local without = vim.api.nvim_buf_line_count(win_id)
+
+    -- 2. Springen zum Anfang der Datei (Zeile 1)
+    vim.cmd('normal! gg')
+
+    -- 3. Eine neue Zeile über der ersten einfügen
+    vim.cmd('normal! O')
+
+    -- template ausführen
     local file_type = vim.o.filetype
     vim.cmd(":Template " .. file_type)
-    vim.cmd(':lua print("Template for '..file_type..'")')
+    vim.defer_fn(function()
+        local with = vim.api.nvim_buf_line_count(win_id)
+        vim.api.nvim_win_set_cursor(win_id, {saved_line + with-without, saved_col})
+        print('Template for '..file_type)
+    end, 100)
 end
 
 local run_python = function()
