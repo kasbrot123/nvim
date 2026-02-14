@@ -28,6 +28,24 @@ require("lazy").setup({
       -- lua functions that many plugins use
       {"nvim-lua/plenary.nvim", lazy = true},
 
+      -- Git integration
+      {"tpope/vim-fugitive"},
+
+      -- git integration
+      {"lewis6991/gitsigns.nvim", config = true, opts = { sign_priority = 100 } },
+
+      -- undotree for better file history, deactivate swapfiles
+      { "mbbill/undotree" },
+
+      -- Diffview for git
+      { "sindrets/diffview.nvim" },
+
+      -- terminal
+      { 'akinsho/toggleterm.nvim', version = "*", config = true },
+
+      -- tables in markdown
+      { "dhruvasagar/vim-table-mode" },
+
       -- Colorschemes
       {
           'bluz71/vim-nightfly-colors',
@@ -234,7 +252,6 @@ require("lazy").setup({
                     -- lualine_a = {'mode'},
                     -- lualine_b = {'branch', 'diff', 'diagnostics'},
                     -- lualine_c = {{'filename', path = 0}}, -- 0 = just filename, 1 = relative path, 2 = absolute path
-
                     -- lualine_x = {'encoding', 'fileformat', 'filetype'},
                     -- lualine_y = {'progress'},
                     -- lualine_z = {'location'}
@@ -264,6 +281,7 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
+        enabled = true,
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
@@ -289,26 +307,6 @@ require("lazy").setup({
         end,
     },
 
-    -- Git integration
-    {"tpope/vim-fugitive"},
-
-    -- git integration
-    {"lewis6991/gitsigns.nvim", -- show line modifications on left hand side
-        config = function()
-            require("gitsigns").setup {
-                sign_priority=100
-            }
-        end,
-    },
-
-    -- undotree for better file history, deactivate swapfiles
-    {"mbbill/undotree"},
-
-    -- Diffview for git
-    {"sindrets/diffview.nvim"},
-
-    -- terminal
-    {'akinsho/toggleterm.nvim', version = "*", config = true},
 
     -- harpoon
     {
@@ -360,9 +358,6 @@ require("lazy").setup({
         end,
     },
 
-    {
-        "dhruvasagar/vim-table-mode"
-    },
 
     -- auto closing
     {
@@ -402,15 +397,6 @@ require("lazy").setup({
         end
     },
 
-    {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "sindrets/diffview.nvim",        -- optional - Diff integration
-            "nvim-telescope/telescope.nvim", -- optional
-        },
-        config = true
-    },
 
     -- new LSP config
     {
@@ -515,22 +501,7 @@ require("lazy").setup({
                         -- {capabilities = ...}
                         lspconfig[server_name].setup({})
                     end,
-
-                    -- because vim variable in lua gives warnings
-                    ["lua_ls"] = function()
-                        lspconfig.lua_ls.setup {
-                            settings = {
-                                Lua = {
-                                    diagnostics = {
-                                        globals = { "vim" },
-                                    }
-                                }
-                            }
-                        }
-                    end,
-
                 },
-
             })
 
             -- LSP diagnostics
@@ -551,6 +522,56 @@ require("lazy").setup({
 
         end,
     },
+
+
+    -- Debugging
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "nvim-neotest/nvim-nio",
+            "williamboman/mason.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
+            -- Hier kannst du sprachspezifische Erweiterungen hinzufügen
+            "mfussenegger/nvim-dap-python", -- Speziell für Python
+        },
+        config = function()
+            local dap = require("dap")
+            local dapui = require("dapui")
+
+            require("mason-nvim-dap").setup({
+                -- Hier die Debugger eintragen, die Mason installieren soll
+                ensure_installed = { "python", "cpptools" }, 
+                automatic_installation = true,
+            })
+
+            -- UI Setup
+            dapui.setup()
+
+            -- Automatisches Öffnen/Schließen der UI
+            dap.listeners.before.attach.dapui_config = function() dapui.open() end
+            dap.listeners.before.launch.dapui_config = function() dapui.open() end
+            dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
+            dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
+
+            -- Python spezifisch (benötigt nvim-dap-python)
+            require("dap-python").setup("python") -- nutzt den python in deinem PATH
+
+            -- Keymaps für das Debugging
+            vim.keymap.set('n', '<F5>', function() dap.continue() end, { desc = "Debug: Start/Continue" })
+            vim.keymap.set('n', '<F1>', function() dap.step_into() end, { desc = "Debug: Step Into" })
+            vim.keymap.set('n', '<F2>', function() dap.step_over() end, { desc = "Debug: Step Over" })
+            vim.keymap.set('n', '<F3>', function() dap.step_out() end, { desc = "Debug: Step Out" })
+            vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, { desc = "Debug: Toggle Breakpoint" })
+            vim.keymap.set('n', '<leader>B', function() 
+                dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) 
+            end, { desc = "Debug: Set Breakpoint with Condition" })
+
+            -- UI manuell togglen
+            vim.keymap.set('n', '<leader>du', function() dapui.toggle() end, { desc = "Debug: Toggle UI" })
+        end
+    },
+
 
 
     -- -------------------------------------------------------------------------
@@ -578,6 +599,16 @@ require("lazy").setup({
 
     -- {"windwp/nvim-autopairs"}, -- autoclose parens, brackets, quotes, etc...
     -- {"windwp/nvim-ts-autotag", after = "nvim-treesitter" }, -- autoclose tags, html
+
+    -- {
+    --     "NeogitOrg/neogit",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",         -- required
+    --         "sindrets/diffview.nvim",        -- optional - Diff integration
+    --         "nvim-telescope/telescope.nvim", -- optional
+    --     },
+    --     config = true
+    -- },
 
   },
 
