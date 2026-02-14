@@ -54,6 +54,7 @@ keymap.set("n", "<leader>sa", "z=", opts)
 keymap.set("n", "<leader>d", ":windo diffthis<CR>", noremap)
 keymap.set("n", "<leader>dd", ":diffoff!<CR>", noremap)
 keymap.set("n", "<leader>b", ":.!", noremap)
+keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = "Suche-Highlights entfernen" })
 
 -- visual mode keymaps
 keymap.set("v", "<leader>l", ":norm Hi", opts)
@@ -73,7 +74,6 @@ keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 keymap.set("n", "gD", vim.diagnostic.open_float, opts)
 keymap.set("n", "gnD", function() vim.diagnostic.jump({count = 1}) end, opts)
 keymap.set("n", "gpD", function() vim.diagnostic.jump({count = -1}) end, opts)
-
 keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 -- telescope plugin
