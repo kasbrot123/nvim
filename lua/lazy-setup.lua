@@ -56,7 +56,8 @@ require("lazy").setup({
               'rebelot/kanagawa.nvim',
               'catppuccin/nvim',
               'rose-pine/neovim',
-              'ribru17/bamboo.nvim'
+              'ribru17/bamboo.nvim',
+              'Mofiqul/vscode.nvim',
           },
           priority = 1000, -- make sure to load this before all the other start plugins
           config = function()
@@ -65,6 +66,7 @@ require("lazy").setup({
               -- vim.cmd([[colorscheme kanagawa]])
               -- vim.cmd([[colorscheme catppuccin]])
               -- vim.cmd([[colorscheme rose-pine]])
+              -- vim.cmd([[colorscheme vscode]])
               vim.cmd([[colorscheme bamboo]])
           end,
       },
