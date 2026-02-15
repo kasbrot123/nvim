@@ -521,7 +521,7 @@ require("lazy").setup({
 
             require("mason-nvim-dap").setup({
                 -- Hier die Debugger eintragen, die Mason installieren soll
-                ensure_installed = { "python", "cpptools" }, 
+                ensure_installed = { "python", "cpptools" },
                 automatic_installation = true,
             })
 
@@ -543,8 +543,8 @@ require("lazy").setup({
             vim.keymap.set('n', '<F2>', function() dap.step_over() end, { desc = "Debug: Step Over" })
             vim.keymap.set('n', '<F3>', function() dap.step_out() end, { desc = "Debug: Step Out" })
             vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, { desc = "Debug: Toggle Breakpoint" })
-            vim.keymap.set('n', '<leader>B', function() 
-                dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) 
+            vim.keymap.set('n', '<leader>B', function()
+                dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
             end, { desc = "Debug: Set Breakpoint with Condition" })
 
             -- UI manuell togglen

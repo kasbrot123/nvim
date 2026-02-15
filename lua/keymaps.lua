@@ -67,7 +67,7 @@ keymap.set("c", "xx", "x!", opts)
 
 -- Autocompletion and LSP
 keymap.set("n", "gr", vim.lsp.buf.rename, opts)
-keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+keymap.set("n", "gh", function() vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 }); vim.lsp.buf.hover() end, opts)
 keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
