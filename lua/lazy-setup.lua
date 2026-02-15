@@ -539,9 +539,9 @@ require("lazy").setup({
 
             -- Keymaps für das Debugging
             vim.keymap.set('n', '<F5>', function() dap.continue() end, { desc = "Debug: Start/Continue" })
-            vim.keymap.set('n', '<F1>', function() dap.step_into() end, { desc = "Debug: Step Into" })
-            vim.keymap.set('n', '<F2>', function() dap.step_over() end, { desc = "Debug: Step Over" })
-            vim.keymap.set('n', '<F3>', function() dap.step_out() end, { desc = "Debug: Step Out" })
+            vim.keymap.set('n', '<F1>', function() dap.step_out() end, { desc = "Debug: Step Out" }) -- breakpoint to breakpoint
+            vim.keymap.set('n', '<F2>', function() dap.step_over() end, { desc = "Debug: Step Over" }) -- every line
+            vim.keymap.set('n', '<F3>', function() dap.step_into() end, { desc = "Debug: Step Into" }) -- every line including stepping into function
             vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, { desc = "Debug: Toggle Breakpoint" })
             vim.keymap.set('n', '<leader>B', function()
                 dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
