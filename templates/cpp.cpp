@@ -1,7 +1,7 @@
 // Author: Michael T.
 // Created on: {{_date_}}
 
-#include <stdio>
+#include <iostream>
 
 
 int main(void) {
