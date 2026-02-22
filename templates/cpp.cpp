@@ -1,4 +1,4 @@
-// Author: Michael T.
+// Author: {{_author_}}
 // Created on: {{_date_}}
 
 #include <iostream>
