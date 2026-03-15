@@ -18,6 +18,10 @@ keymap.set({"n", "v"}, "L", "$", opts)
 keymap.set({"n", "v"}, "J", "<C-d>", opts)
 keymap.set({"n", "v"}, "K", "<C-u>", opts)
 
+-- move visual selections
+keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+
 -- window movements
 keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
