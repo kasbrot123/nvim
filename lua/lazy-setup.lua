@@ -347,7 +347,7 @@ require("lazy").setup({
                 -- sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = false },
-                autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
+                -- autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
                 auto_install = false,
 
                 incremental_selection = {
