@@ -33,6 +33,12 @@ opt.backspace = "indent,eol,start"
 -- update: i have no idea what this actually does, better leave it here
 
 
+-- default compiler
+--vim.env.CC = "gcc"
+-- if vim.loop.os_uname().sysname == "Windows_NT" then
+--     vim.env.CC = "gcc"
+-- end
+
 
 -- -----------------------------------------------------------------------------
 -- Options not used

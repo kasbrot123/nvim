@@ -338,29 +338,48 @@ require("lazy").setup({
     -- treesitter configuration
     {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false,
         build = ":TSUpdate",
         config = function ()
-            local configs = require("nvim-treesitter.configs")
+            Languages = { 'python', 'lua', 'vim', 'vimdoc' }
+            vim.env.CC = 'gcc'
 
-            configs.setup({
-                ensure_installed = { "lua", "vim", "vimdoc", "python"},
-                -- sync_install = false,
-                highlight = { enable = true },
-                indent = { enable = false },
-                -- autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
-                auto_install = false,
+            ts = require('nvim-treesitter')
+            ts.setup({
+                -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+                
+                install_dir = vim.fn.stdpath('data') .. '/site',
+                vim.api.nvim_create_autocmd('FileType', {
+                    pattern = Languages,
+                    callback = function() vim.treesitter.start() end,
+                })
 
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<CR>",
-                        node_incremental = "<CR>",
-                        scope_incremental = false,
-                        node_decremental = "<bs>",
-                    },
-                },
             })
+            ts.install(Languages)
         end,
+
+        -- config = function ()
+        --     local configs = require("nvim-treesitter.configs")
+        --
+        --     configs.setup({
+        --         ensure_installed = { "lua", "vim", "vimdoc", "python"},
+        --         -- sync_install = false,
+        --         highlight = { enable = true },
+        --         indent = { enable = false },
+        --         -- autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
+        --         auto_install = false,
+        --
+        --         incremental_selection = {
+        --             enable = true,
+        --             keymaps = {
+        --                 init_selection = "<CR>",
+        --                 node_incremental = "<CR>",
+        --                 scope_incremental = false,
+        --                 node_decremental = "<bs>",
+        --             },
+        --         },
+        --     })
+        -- end,
     },
 
 
