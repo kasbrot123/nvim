@@ -48,6 +48,7 @@ require("lazy").setup({
 
       -- auto closing
       { 'windwp/nvim-autopairs', event = "InsertEnter", config = true },
+      -- { 'windwp/nvim-autopairs', config = true },
 
       -- Colorschemes
       {
@@ -201,7 +202,7 @@ require("lazy").setup({
                 desc = "[F]ind [D]iagnostics",
             },
             {
-                "<leader>fw",
+                "<leader>fD",
                 function()
                     require("fzf-lua").diagnostics_workspace()
                 end,
