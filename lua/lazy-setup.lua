@@ -348,7 +348,7 @@ require("lazy").setup({
             ts = require('nvim-treesitter')
             ts.setup({
                 -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-                
+
                 install_dir = vim.fn.stdpath('data') .. '/site',
                 vim.api.nvim_create_autocmd('FileType', {
                     pattern = Languages,
@@ -608,7 +608,6 @@ require("lazy").setup({
     --         "nvim-telescope/telescope.nvim", -- optional
     --     },
     --     config = true
-    -- },
 
   },
 
@@ -616,6 +615,8 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true, notify = false, frequency = 86400*7 }, -- every day
+  -- local is_sunday = os.date("%a") == "Sun"
+
+  checker = { enabled = os.date("%a") == "Sun", notify = false, frequency = 86400*7 }, -- every day
   rocks = { enabled = false, }
 })
