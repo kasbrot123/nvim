@@ -25,6 +25,7 @@ opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 opt.hlsearch = true -- show all results
 opt.incsearch = true -- already highlights while searching
+opt.cursorline = true -- cursor line
 
 
 -- backspace
