@@ -1,8 +1,9 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
-local opts = { noremap = true, silent = false }
-local noremap = { noremap = true }
+-- noremap is already the default for vim.keymap.set
+local opts = { silent = false }
+local noremap = {}
 
 
 --------------------------------------------------------------------------------
@@ -50,14 +51,15 @@ keymap.set("v", ">", ">gv^", opts) -- Visual, Stay in indent mode
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap.set("n", "<leader>v", "<C-v>", opts) -- windows terminal
 keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>", opts)
-keymap.set("n", "<leader>c", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>", opts)
-keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes | set mouse=nvi<cr>", opts)
-keymap.set("n", "<leader>s", ":set invspell<CR>", opts)
+-- clean view for copying (cn = clean on, cc = clean off)
+keymap.set("n", "<leader>cn", ":set nonu | set norelativenumber | set signcolumn=no | set mouse=<cr>", opts)
+keymap.set("n", "<leader>cc", ":set nu | set relativenumber | set signcolumn=yes:2 | set mouse=nvi<cr>", opts)
+keymap.set("n", "<leader>st", ":set invspell<CR>", opts) -- spell toggle
 keymap.set("n", "<leader>ss", "1z=", opts)
 keymap.set("n", "<leader>sa", "z=", opts)
-keymap.set("n", "<leader>d", ":windo diffthis<CR>", noremap)
+keymap.set("n", "<leader>dt", ":windo diffthis<CR>", noremap) -- diff this
 keymap.set("n", "<leader>dd", ":diffoff!<CR>", noremap)
-keymap.set("n", "<leader>b", ":.!", noremap)
+keymap.set("n", "<leader>!", ":.!", noremap) -- <leader>b is the DAP breakpoint
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = "Suche-Highlights entfernen" })
 
 -- visual mode keymaps
@@ -70,27 +72,14 @@ keymap.set("c", "ww", "w!", opts)
 keymap.set("c", "xx", "x!", opts)
 
 -- Autocompletion and LSP
-keymap.set("n", "gr", vim.lsp.buf.rename, opts)
-keymap.set("n", "gh", function() vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 }); vim.lsp.buf.hover() end, opts)
+-- rename: use the Neovim default "grn" (a custom "gr" would block grn/grr/gra/gri)
+keymap.set("n", "gh", function() vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 }) end, opts)
 keymap.set("n", "gd", vim.lsp.buf.definition, opts)
--- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 keymap.set("n", "gD", vim.diagnostic.open_float, opts)
 keymap.set("n", "gnD", function() vim.diagnostic.jump({count = 1}) end, opts)
 keymap.set("n", "gpD", function() vim.diagnostic.jump({count = -1}) end, opts)
-keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
-
--- telescope plugin
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
-keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap.set("n", "<leader>fs", "<cmd>Telescope spell_suggest<cr>", opts)
-keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
-keymap.set("n", "<leader>fB", "<cmd>Telescope buffers<cr>", opts)
-keymap.set("n", "<leader>fb", "<cmd>Telescope builtin<cr>", opts)
-keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
-keymap.set("n", "<leader>fC", "<cmd>Telescope git_commits<cr>", opts)
-keymap.set("n", "<leader>fc", "<cmd>Telescope find_files hidden=true cwd="..vim.fn.stdpath("config").."<cr>", opts)
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+-- gf (references), gt (type definitions) and all <leader>f... finder keymaps
+-- are in the snacks.nvim block in lazy-setup.lua
 
 
 --------------------------------------------------------------------------------
@@ -198,8 +187,6 @@ end
 -- terminal things
 
 keymap.set("n", "<leader>h", header_text, opts)
-keymap.set("n", "<leader>t", header_text, opts)
-keymap.set("n", "<leader>x", execute_program, opts)
 keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
 keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
@@ -211,7 +198,7 @@ keymap.set("n", "<leader>op", '<cmd>2TermExec cmd="ipython" direction=vertical s
 keymap.set("n", "<leader>p", '<cmd>2ToggleTerm cmd="ipython" direction=vertical<cr>', opts)
 keymap.set("n", "<leader>x", execute_program, opts)
 keymap.set("v", "<leader>x", run_python_visual, opts)
-keymap.set("n", "<F5>", execute_program, opts)
+-- <F5> belongs to the debugger (dap.continue), see lua/plugins/dap.lua
 keymap.set("n", "<leader><leader>", execute_program, opts)
 
 

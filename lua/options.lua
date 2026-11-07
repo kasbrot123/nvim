@@ -6,12 +6,10 @@ opt.number = true -- shows absolute line number on cursor line (when relative nu
 opt.tabstop = 4 -- 4 is best
 opt.shiftwidth = 4 -- when you enter >> or <<
 opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
 opt.scrolloff = 4 -- scrolloff prevents cursor to hit the bottom/top, right side
 opt.sidescrolloff = 4 -- same with side when wrap is off
 opt.colorcolumn = "80" -- max text/code width indication
 opt.signcolumn = "yes:2" -- show sign column so that text doesn't shift
-opt.termguicolors = true -- turn on termguicolors for nightfly colorscheme to work
 opt.wrap = true -- line wrap to see everything in the line
 opt.lbr = true -- breaks at space not at a word
 opt.splitright = true -- split vertical window to the right
@@ -23,15 +21,15 @@ opt.list = true -- shows invisible chars
 opt.listchars = { tab = "-->", trail = "." } -- shows tabs and spaces
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
-opt.hlsearch = true -- show all results
-opt.incsearch = true -- already highlights while searching
 opt.cursorline = true -- cursor line
 
+-- defaults in Neovim, no need to set them:
+-- autoindent, hlsearch, incsearch, backspace=indent,eol,start,
+-- termguicolors (auto-detected since 0.10)
 
--- backspace
-opt.backspace = "indent,eol,start"
--- allow backspace on indent, end of line or insert mode start position
--- update: i have no idea what this actually does, better leave it here
+-- nvim-tree recommends disabling netrw as early as possible
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 
 -- default compiler
