@@ -287,7 +287,7 @@ require("lazy").setup({
             require("mason-tool-installer").setup({
                 -- ruff is missing on purpose: the mason install fails on windows,
                 -- install it with "pip install ruff" instead (conform finds it in PATH)
-                ensure_installed = { "stylua", "clang-format" },
+                ensure_installed = { "stylua" },
             })
 
             -- server specific settings go here, e.g.
@@ -298,7 +298,6 @@ require("lazy").setup({
                     "pyright",
                     "lua_ls",
                     "lemminx",
-                    "clangd",
                 },
                 automatic_enable = true,
             })
@@ -371,8 +370,6 @@ require("lazy").setup({
                 formatters_by_ft = {
                     lua = { "stylua" },
                     python = { "ruff_format" },
-                    c = { "clang-format" },
-                    cpp = { "clang-format" },
                 },
                 -- use the lsp formatter if there is no formatter configured above
                 default_format_opts = { lsp_format = "fallback" },
@@ -401,8 +398,8 @@ require("lazy").setup({
 
             require("mason-nvim-dap").setup({
                 -- Hier die Debugger eintragen, die Mason installieren soll
-                ensure_installed = { "python", "cpptools" },
-                automatic_installation = true,
+                -- ensure_installed = { "python", "cpptools" },
+                -- automatic_installation = true,
             })
 
             -- UI Setup
